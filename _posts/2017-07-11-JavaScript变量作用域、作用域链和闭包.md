@@ -33,7 +33,17 @@ if(true) {
 }
 console.log(b); //20
 ``` 
-
+```
+var scope = {};
+  if (scope instanceof Object) { //true
+    var j = 1;
+    for (var i = 0; i < 10; i++) {
+         //console.log(i);
+    }
+    console.log(i); //10
+  }
+console.log(j); //1
+```
 ## 变量声明提前数内声明的变量在函数体内始终是可见的
 ```
 var a =10；

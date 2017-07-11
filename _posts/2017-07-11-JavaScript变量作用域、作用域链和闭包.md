@@ -74,9 +74,10 @@ var scope = {};
   if (scope instanceof Object) { //true
     var j = 1;
     for (var i = 0; i < 10; i++) {
-         //console.log(i);
+        var k = 20;
     }
     console.log(i); //10
+    console.log(k); //20
   }
 console.log(j); //1
 ```

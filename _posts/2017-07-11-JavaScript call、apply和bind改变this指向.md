@@ -154,3 +154,27 @@ function isArray(obj){
     return Object.prototype.toString.call(obj) === '[object Array]' ;
 }
 ```
+## 类数组转数组:call
+```
+function listToArray(likeAry) {
+  if (typeof likeAry === "undefined") {
+    throw new Error("参数不合法~~");
+  }
+  var arr = [];
+  try {
+    arr = Array.prototype.slice.call(likeAry); //或[].slice.call(likeAry)
+  } catch (e) {
+    for (var i = 0; i < likeAry.length; i++) {
+      arr.push(likeAry[i]);
+    }
+  }
+  return arr;
+}
+```
+## 数组之间追加:apply
+```
+var array1 = [12 , "foo" , {name "Joe"} , -2458]; 
+var array2 = ["Doe" , 555 , 100]; 
+Array.prototype.push.apply(array1, array2); 
+/* array1 值为  [12 , "foo" , {name "Joe"} , -2458 , "Doe" , 555 , 100] */
+```

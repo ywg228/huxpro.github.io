@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      JavaScript作用域和变量提升
+title:      JavaScript预解析、变量提升和函数提升
 subtitle:   学习笔记 
 date:       2017-07-10
 author:     Ywg

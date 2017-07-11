@@ -44,6 +44,29 @@ var scope = {};
   }
 console.log(j); //1
 ```
+
+## ES6中的块级作用域
+但作用域限定在块级，let声明的变量不存在变量声明提升。<br>
+ES6规定，如果代码块中存在let变量，这个区块从一开始就形成了封闭作用域。凡是在声明之前就使用，就会报错。即在代码块内，在let声明之前使用变量都是不可用的。
+```
+if(true) {
+  let b = 20;
+}
+console.log(b); //访问不到，报错
+```
+```
+for (let i = 0; i < 10; i++) {
+    
+}
+console.log(i); //访问不到，报错
+```
+```
+//let声明的变量不存在变量声明提升
+function fn() {
+    console.log(a) //a先使用后声明，报语法错
+    let a;
+}
+```
 ## 变量声明提前数内声明的变量在函数体内始终是可见的
 ```
 var a =10；
@@ -85,3 +108,24 @@ console.log(window.a); //100
 在javascript中，每个函数都有自己的执行上下文环境，当代码在这个环境中执行时，会创建变量对象的作用域链，作用域链是一个对象列表或对象链，它保证了变量对象的有序访问。 <br>
 作用域链的前端是当前代码执行环境的变量对象，常被称之为“活跃对象”，变量的查找会从第一个链的对象开始，如果对象中包含变量属性，那么就停止查找，如果没有就会继续向上级作用域链查找，直到找到全局对象中。 <br>
 作用域链的逐级查找，也会影响到程序的性能，变量作用域链越长对性能影响越大，这也是我们尽量避免使用全局变量的一个主要原因。
+```
+var outVariable = "我是最外层变量"; //最外层变量
+function outFun() { //最外层函数
+    var inVariable = "内层变量";
+    function innerFun() { //内层函数
+        console.log(inVariable);
+        var tempVariable = inVariable;
+    }
+    innerFun();
+}
+```
+其作用域链为：
+```
+window
+├──outVariable
+└──outFun()
+   ├──inVariable
+   └──innerFun()
+      └──tempVariable
+```
+对于 innerFun()，其作用域链包含 3 个对象：innerFun() 自己的变量对象、outFun()的变量对象、全局变量对象。

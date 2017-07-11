@@ -178,3 +178,31 @@ window
 
 ## 闭包
 闭包是指在当前作用域内总是能访问外部作用域中的变量。
+### 使用场景
+##### 1. 函数作为返回值
+```
+function Fn(){
+  var a = 10;
+  return function() {
+    console.log(a);
+  }
+}
+var fn = new Fn();
+var a = 20;
+fn(); //10
+```
+##### 2. 函数作为参数传递
+```
+function Fn1(){
+  var a = 10;
+  return function() {
+    console.log(a);
+  }
+}
+var fn1 = new Fn1();
+function Fn2(fn){
+  var a = 20;
+  fn();
+}
+Fn2(fn1); //10
+```

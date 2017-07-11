@@ -40,6 +40,8 @@ sub.call(add, 1, 2); //this -> function add()
     
 # apply
 fun.apply(thisArg, [argsArray])<br>
+与call方法几乎完全相同，唯一的区别在于，apply的第二个参数必须是一个包含多个参数的数组（或类数组对象）。
+注意: Chrome 14 以及 Internet Explorer 9 仍然不接受类数组对象。如果传入类数组对象，它们会抛出异常。
 ```
 //这个例子说明call和apply传参的区别
 var foo = {
@@ -56,7 +58,7 @@ bar.apply(foo, [1, 2]); //this -> foo
 # bind 
 fun.bind(thisArg[, arg1[, arg2[, ...]]]) <br>
 bind是ES5中新增的一个方法（IE6,7,8不支持），它的传参与call类似， <br>
-但又和call/apply有着明显的不同，即调用call/apply都会立即执行对应的函数，而bind 不会执行对应的函数，只是返回了对函数的引用，方便之后调用。
+但又和call/apply有着明显的不同，即call/apply都会自动执行对应的函数，而bind不会执行对应的函数，只是返回了对函数的引用，方便之后调用。
 ```
 var foo = {
   x: 100
@@ -86,7 +88,6 @@ function onClick(a,b){
   console.log(this.x, a, b); //100, p1, p2
 }
 ```
-
 bind的兼容实现：
 ```
 if (!Function.prototype.bind) {

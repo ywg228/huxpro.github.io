@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      JavaScript变量作用域和作用域链
+title:      JavaScript变量作用域、作用域链和闭包
 subtitle:   学习笔记 
 date:       2017-07-11
 author:     Ywg

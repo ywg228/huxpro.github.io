@@ -86,6 +86,31 @@ function onClick(a,b){
   console.log(this.x, a, b); //100, p1, p2
 }
 ```
+
+bind的兼容实现：
+```
+if (!Function.prototype.bind) {
+  Function.prototype.bind = function (oThis) {
+    if (typeof this !== 'function') {
+      throw new TypeError('调用者不是当前函数对象');
+    }
+    var aArgs = Array.prototype.slice.call(arguments, 1),
+        fToBind = this, //this在这里指向的是目标函数
+        fNOP = function () {},
+        fBound = function () {
+          return fToBind.apply(
+            this instanceof fNOP && oThis ? this : oThis || window,
+                        //将通过bind传递的参数和调用时传递的参数进行合并，并作为最终的参数传递
+                        aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+        //将目标函数的原型对象拷贝到新函数中，因为目标函数有可能被当作构造函数使用
+        fNOP.prototype = this.prototype;
+        fBound.prototype = new fNOP();
+        //返回fBond的引用，由外部按需调用
+        return fBound;
+    };
+}
+```
 # call、apply和bind的区别
 相同点：都是用来改变this指向 <br>
 不同点： <br>

@@ -55,7 +55,8 @@ bar.apply(foo, [1, 2]); //this -> foo
 ```
 # bind 
 fun.bind(thisArg[, arg1[, arg2[, ...]]]) <br>
-bind是在EcmaScript5中扩展的方法（IE6,7,8不支持）
+bind是ES5中新增的一个方法（IE6,7,8不支持），它的传参与call类似， <br>
+但又和call/apply有着明显的不同，即调用call/apply都会立即执行对应的函数，而bind 不会执行对应的函数，只是返回了对函数的引用，方便之后调用。
 ```
 var foo = {
   x: 100
@@ -69,6 +70,21 @@ bar.call(foo, 1, 2); //this -> foo
 bar.apply(foo, [1, 2]); //this -> foo
 var func = bar.bind(foo, 1, 2); //this -> foo
 func();
+```
+ES5引入bind的真正目的：为了弥补call/apply的不足，由于call/apply会对调用的函数立即执行，从而导致它无法在事件绑定函数中使用，因为事件绑定函数不需要我们手动执行，它是在事件被触发时由JS内部自动执行的。而bind在改变函数this指向的同时又不会立即执行目标函数，因此可以完美的解决上述问题。看一个例子：
+```
+var foo = {
+  x: 100
+};
+/**
+ * 给document添加click事件监听，并绑定onClick函数
+ * 通过bind方法设置onClick的this为foo，并传递参数p1,p2
+ */
+document.addEventListener('click', onClick.bind(foo,'p1','p2'), false);
+//当点击网页时触发并执行
+function onClick(a,b){
+  console.log(this.x, a, b); //100, p1, p2
+}
 ```
 # call、apply和bind的区别
 相同点：都是用来改变this指向 <br>

@@ -112,7 +112,7 @@ if(p1 instanceof Person) {
 图片来自  [mollypages.org](http://www.mollypages.org/tutorials/js.mp) 
 
 ## 注意点
-#### 1. 只有函数才有prototype属性
+#### 1. 只有函数才有prototype属性，其他(非函数)对象不具有该属性. 而 __proto__ 是对象的内部属性, 任何对象都拥有该属性.
 #### 2. p1.constructor === Person
 当获取 p1.constructor 时，其实 p1 中并没有 constructor 属性,当不能读取到constructor 属性时，会从 p1 的原型也就是 Person.prototype 中读取，
 正好原型中有该属性，所以：p1.constructor === Person.prototype.constructor === Person
@@ -214,6 +214,7 @@ p1.__proto__.getAge(); //p1.__proto__.age -> 30
 子类B如果想要继承A类中的所有属性和方法(公用和私有),只需要 B.prototype = new A;即可 <br>
 **特点：**把父类中私有和公用的都继承到子类的原型上（子类公共的)<br>
 **核心：**原型继承并不是把父类中的属性和方法克隆一份给B，而是让B和A之间增加了原型链的连接，以后B的实例想要A中的getX方法，需要一级级的向上查找来使用
+
 ```   
 function A() {
     this.a = 100;
@@ -228,3 +229,4 @@ B.prototype = new A;
 var b = new B;
 b.getA(); //100
 ```   
+

@@ -53,6 +53,8 @@ console.log(Person.prototype.constructor === Person); // true
 //查找属性的时候查到 Object.prototype 就停止查找了。
 console.log(Object.prototype.__proto__ === null) // true
 ```
+如图：<br>
+![原型链](https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype5.png)
 ## 完整的原型链图
 ![原型链](http://www.mollypages.org/tutorials/jsobj_full.jpg)
 图片来自  [mollypages.org](http://www.mollypages.org/tutorials/js.mp) 

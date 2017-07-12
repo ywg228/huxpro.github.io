@@ -26,7 +26,7 @@ setTimeout(funtion() {
 }, 1000);
 console.log(300);
 ```
-#### 2. 网络请求：ajax请求、动态<img>加载
+#### 2. 网络请求：ajax请求、动态img加载
 ajax请求：
 ```
 console.log('start');
@@ -35,7 +35,7 @@ $.get('./data.json', function(data) {
 });
 console.log('end');
 ```
-动态<img>加载：
+动态img加载：
 ```
 console.log('start');
 var img = document.createElement('img');

@@ -262,3 +262,22 @@ function Fn2(fn){
 }
 Fn2(fn1); //10
 ```
+### 实际应用
+#### 封装变量
+```
+function isFirstLoad() {
+  var _list = [];
+  return function (id) {
+    if (_list.indexOf(id) >= 0) {
+      return false;
+    } else {
+      _list.push(id);
+      return false;
+    }
+  }
+}
+var firstLoad = isFirstLoad();
+console.log(firstLoad(10)); //true
+console.log(firstLoad(10)); //false
+console.log(firstLoad(20)); //true
+```

@@ -12,30 +12,37 @@ tags: JavaScript
 ## prototype
 每个**函数**都有一个 prototype 属性，它存储的值是一个对象数据类型的值，浏览器默认为它开辟一个堆内存。
 ```
-function Foo() {
+function Person() {
 }
-Foo.prototype.x = 'hello';
-var f1 = new Foo();
-console.log(f1.x); //hello
-console.log(Foo.x) //undefined
+Person.prototype.name = 'zhangsan';
+var p1 = new Person();
+console.log(p1.name); //hello
+console.log(Person.name) //undefined
 ```
+如图：
+![prototype](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype1.png)
 
 ## __proto__
 每一个JS对象(除了 null )都具有的一个 __proto__ 属性，这个属性指向对象所属类的原型。即f1.__proto__ === Foo.prototype ->  true
 ```
-function Foo() {
+function Person() {
 }
-var f1 = new Foo();
-console.log(f1.__proto__ === Person.prototype); // true
+var p1 = new Person();
+console.log(p1.__proto__ === Person.prototype); // true
 ```
+如图：
+![__proto__](https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype2.png)
 
 ## constructor
 每个原型都有一个 constructor 属性指向关联的构造函数。 Foo.prototype.constructor === Foo ->  true 
 ```
-function Foo() {
+function Person() {
 }
-console.log(Foo.prototype.constructor === Foo); // true
+console.log(Person.prototype.constructor === Person); // true
 ```
+如图：
+![constructor](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype3.png)
+
 浏览器默认给 prototype 开辟的堆内存中自带一个属性：constructor，指向当前类本身
 ![constructor](http://images.cnitblog.com/blog/138012/201409/172130097842386.png)
 

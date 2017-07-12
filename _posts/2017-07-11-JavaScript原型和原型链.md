@@ -58,7 +58,7 @@ console.log(p1.__proto__.constructor === Person); //true
 如图：<br>
 ![constructor](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype3.png)
 
-函数定义的时候会自带一个prototype属性， 浏览器默认为它开辟一个堆内存。<br>
+函数定义的时候会自带一个prototype属性，浏览器默认为它开辟一个堆内存。<br>
 浏览器默认给 prototype 开辟的堆内存中自带一个属性：constructor，指向当前构造函数本身。<br>
 ![constructor](http://upload-images.jianshu.io/upload_images/1430985-b650bc438f236877.jpg)
 

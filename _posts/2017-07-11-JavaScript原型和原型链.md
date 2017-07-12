@@ -93,11 +93,11 @@ function Person() {
 var p1 = new Person();
 console.log(p1.name); // zhangsan
 ```
-2.某一个方法中的this -> 看方法执行的时候：."前面是谁，this就是谁
-    1)先确定this的指向（this是谁)
-    2)把this替换成对应的代码
-     *     3)按照原型链的查找机制，一步步的查找对应值的即可
-```    
+2.某一个方法中的this -> 看方法执行的时候：'.'前面是谁，this就是谁<br>
+    1)先确定this的指向，看方法执行时'.'前面的<br>
+    2)把this替换成对应的代码<br>
+    3)最后按照原型链的查找机制，一步步的查找对应值的即可(看原型链模式这一块)<br> 
+```    
 function Person() {
   this.name = 'zhangsan';
   this.age = 20;
@@ -107,13 +107,18 @@ function Person() {
 }
 Person.prototype = {
   constructor: Person,
-  age: '30,
+  age: 30,
   getName: function () {
-    console.log(this.n);
+    console.log(this.name);
   },
-        getY: function () {
-            console.log(this.y);
-        }
-
-    }
+  getAge: function () {
+     onsole.log(this.age);
+  }
+}
+var p1 = new Person();
+p1.getName(); //p1.name - > 'zhangsan'
+p1.__proto__.getName(); //p1.__proto__.name -> undefined
+Person.prototype.getName(); //undefined
+p1.getAge(); //p1.age -> 20
+p1.__proto__.getAge(); //p1.__proto__.age -> 30
 ```     

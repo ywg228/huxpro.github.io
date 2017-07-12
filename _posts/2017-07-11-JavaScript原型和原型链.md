@@ -12,29 +12,33 @@ tags: JavaScript
 ## prototype
 每个**函数**都有一个 prototype 属性
 ```
-function Person() {
+function Foo() {
 }
-Person.prototype.name = 'zhangsan';
-Person.prototype.getAge = function() {
+Foo.prototype.name = 'zhangsan';
+Foo.prototype.getAge = function() {
   return 20;
 };
-var person = new Person();
-console.log(person.name);
-console.log(person.getAge());
+var f = new Foo();
+console.log(f.name);
+console.log(f.getAge());
 ```
 
 ## __proto__
-每一个JS对象(除了 null )都具有的一个__proto__ 属性，叫，这个属性指向该对象的原型。
+每一个JS对象(除了 null )都具有的一个 __proto__ 属性，叫，这个属性指向该对象的原型。
 ```
-function Person() {
+function Foo() {
 }
-var person = new Person();
-console.log(person.__proto__ === Person.prototype); // true
+var f = new Foo();
+console.log(f.__proto__ === Person.prototype); // true
 ```
 
 ## constructor
-
-
+每个原型都有一个 constructor 属性指向关联的构造函数。
+``
+function Foo() {
+}
+console.log(Foo.prototype.constructor === Foo); // true
+``
 
 完整的原型链图：
 ![原型链](http://www.mollypages.org/tutorials/jsobj_full.jpg)

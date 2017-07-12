@@ -33,7 +33,7 @@ console.log(typeof  new RegExp());  //object 无效
 typeof只能用于基本数据类型检测，对于**null还有bug**。<br>
 #### 应用
 在实际的项目应用中，typeof只有两个用途，就是检测一个元素是否为undefined，或者是否为function。<br>
-应用一：检测一个元素是否为undefined，并添加默认值
+**应用一**：检测一个元素是否为undefined，并添加默认值
 ```
 function fn(num1, num2) {
    // 方式一
@@ -46,7 +46,7 @@ function fn(num1, num2) {
 fn(10);
 ```
 而不要去使用if(num)，因为如果num不存在（未声明）则会出错。<br>
-应用一：回调函数调用
+**应用二**：回调函数调用
 ```
 function fn(callback) {
     //typeof callback === 'function' ? callback() : null;

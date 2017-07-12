@@ -49,7 +49,7 @@ console.log(p1.__proto__.constructor === Person); //true
 浏览器默认给 prototype 开辟的堆内存中自带一个属性：constructor，指向当前类本身
 ![constructor](http://images.cnitblog.com/blog/138012/201409/172130097842386.png)
 
-## 原型链
+## 原型链模式
 通过 对象名.属性名 的方式获取属性值：<br>
 首先在对象的私有属性上进行查找，如果私有属性中存在，则获取私有属性值， 反之，则通过__proto__找到所属构造函数的原型（构造函数的原型上定义的方法和属性都是当前实例公用的），原型上存在的话则获取公有的属性值， 如果原型上也没有，则继续通过原型上的__proto__继续向上查找，一直找到Object.prototype为止，这就是原型链。
 ```

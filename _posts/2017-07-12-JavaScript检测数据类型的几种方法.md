@@ -65,3 +65,21 @@ console.log(reg.constructor === Object); //false
 **局限性：**<br>
  把类的原型进行重写，在重写的过程中很有可能把之前的constructor给覆盖了,这样检测的结果是不准确的。 <br>
  constructor不可以检测null和undefined
+ 
+## Object.prototype.toString.call()  最准确最常用的方式
+```
+console.log(Object.prototype.toString.call(1)); //'[object Number]'
+console.log(Object.prototype.toString.call('1')); //'[object String]'
+console.log(Object.prototype.toString.call(true)); //'[object Boolean]'
+console.log(Object.prototype.toString.call([]));//'[object Array]'
+console.log(Object.prototype.toString.call(/^$/));//'[object RegExp]'
+console.log(Object.prototype.toString.call(new Date()));//'[object Date]'
+console.log(Object.prototype.toString.call(null));//'[object Null]'
+console.log(Object.prototype.toString.call(undefined));//'[object Undefined]'
+console.log(Object.prototype.toString.call(function(){}));//'[object Function]'
+```
+```
+funtion isArray(obj) { //判断一个变量是否是数组
+   return Object.prototype.toString.call(obj) === '[object Array]';
+}
+```

@@ -135,6 +135,7 @@ console.log(p1.name); // zhangsan
 1)先确定this的指向，看方法执行时'.'前面的内容<br>
 2)把this替换成对应的代码<br>
 3)最后按照原型链的查找机制，一步步的查找对应值的即可(看原型链模式这一块)
+
 ```    
 function Person() {
   this.name = 'zhangsan';

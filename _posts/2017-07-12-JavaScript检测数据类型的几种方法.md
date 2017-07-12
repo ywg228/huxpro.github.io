@@ -29,7 +29,7 @@ console.log(typeof  new RegExp());  //object 无效
 ```
 #### 局限性：
 对于Array，RegExp，Date等对象数据类型使用typeof一律返回object，不能检测。<br>
-#### 应用：
+#### 适用条件：
 typeof只能用于基本数据类型检测，对于null还有bug。<br>
 在实际的项目应用中，typeof只有两个用途，就是检测一个元素是否为undefined，或者是否为function。
 ```
@@ -48,12 +48,14 @@ console.log('' instanceof String);              //false
 console.log(new String('1') instanceof String); //true
 console.log(function(){} instanceof Function);  //true
 ```
-**局限性：**<br>
+#### 局限性：
 对于基本数据类型来说，字面量创建和实例方式创建出来的结果有区别，从严格意义上来讲，只有实例创建出来的结果才是标准对象数据类型的值，所以**不能用来检测和处理字面量方式创建的基本数据类型的值**。<br>
 instanceof不可以检测null和undefined
+#### 适用条件
+instanceof适用于检测对象，它是基于原型链运作的。
 
 ## constructor
-构造函数，作用和instanceof非常相似，可以处理基本数据类型的检测。
+构造函数，作用和instanceof非常相似。
 ```
 var obj = [];
 console.log(obj.constructor === Array);  //true
@@ -64,10 +66,12 @@ var reg = /^$/;
 console.log(reg.constructor === RegExp); //true
 console.log(reg.constructor === Object); //false
 ```
-**局限性：**<br>
- 把类的原型进行重写，在重写的过程中很有可能把之前的constructor给覆盖了,这样检测的结果是不准确的。 <br>
- constructor不可以检测null和undefined
- 
+#### 局限性：
+把类的原型进行重写，在重写的过程中很有可能把之前的constructor给覆盖了,这样检测的结果是不准确的。 <br>
+constructor不可以检测null和undefined
+#### 适用条件：
+constructor指向的是最初创建者，而且容易伪造，不适合做类型判断；
+
 ## Object.prototype.toString.call()  最准确最常用的方式
 首先获取Object原型的toString方法，让方法执行，并且改变this指向，让toString方法中的this指向第一个参数的值。<br>
 Object.prototype.toString作用是返回当前方法的执行主体（方法中this）所属类的详细信息。<br>
@@ -89,6 +93,8 @@ funtion isArray(obj) { //判断一个变量是否是数组
    return Object.prototype.toString.call(obj) === '[object Array]';
 }
 ```
+#### 适用条件：
+toString适用于ECMA内置JavaScript类型（包括基本数据类型和内置对象）的类型判断。
 
 ## jQuery中的方法
 ```

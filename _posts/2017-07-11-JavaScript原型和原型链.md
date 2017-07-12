@@ -34,11 +34,11 @@ console.log(f.__proto__ === Person.prototype); // true
 
 ## constructor
 每个原型都有一个 constructor 属性指向关联的构造函数。
-``
+```
 function Foo() {
 }
 console.log(Foo.prototype.constructor === Foo); // true
-``
+```
 
 完整的原型链图：
 ![原型链](http://www.mollypages.org/tutorials/jsobj_full.jpg)

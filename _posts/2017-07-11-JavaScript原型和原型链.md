@@ -8,6 +8,18 @@ header-img: img/home-bg.jpg
 catalog:    true
 tags: JavaScript
 ---
+## 前言
+```
+function Person(){
+    this.name = 'zhangsan';
+}
+Person.prototype.getName = function(){
+    console.log(this.name);
+}
+var p1 = new Person();
+p1.getName();      //'zhangsan' 
+```
+上面这个例子中的p1获取到了getName方法和name属性，这是怎么做到的呢？
 
 ## prototype
 每个**函数**都有一个 prototype 属性，它存储的值是一个对象数据类型的值，浏览器默认为它开辟一个堆内存。
@@ -71,4 +83,37 @@ console.log(Object.prototype.__proto__ === null) // true
 正好原型中有该属性，所以：p1.constructor === Person.prototype.constructor === Person
 ### 所有prototype的__proto__都指向Object.prototype
 
+## 原型链模式中的this
+常见两种情况：<br>
+1.在构造函数中this.XXX = XXX; this -> 当前构造函数的实例
+```
+function Person() {
+  this.name = 'zhangsan';
+}
+var p1 = new Person();
+console.log(p1.name); // zhangsan
+```
+2.某一个方法中的this -> 看方法执行的时候：."前面是谁，this就是谁
+    1)先确定this的指向（this是谁)
+    2)把this替换成对应的代码
+     *     3)按照原型链的查找机制，一步步的查找对应值的即可
+```    
+function Person() {
+  this.name = 'zhangsan';
+  this.age = 20;
+  this.getAge = function () {
+    console.log(this.age);
+  }
+}
+Person.prototype = {
+  constructor: Person,
+  age: '30,
+  getName: function () {
+    console.log(this.n);
+  },
+        getY: function () {
+            console.log(this.y);
+        }
 
+    }
+```     

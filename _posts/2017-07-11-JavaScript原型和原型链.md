@@ -39,6 +39,7 @@ console.log(p1.__proto__ === Person.prototype); // true
 function Person() {
 }
 console.log(Person.prototype.constructor === Person); // true
+console.log(p1.__proto__.constructor === Person); //true
 ```
 如图：<br>
 ![constructor](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype3.png)
@@ -50,6 +51,8 @@ console.log(Person.prototype.constructor === Person); // true
 通过 对象名.属性名 的方式获取属性值：<br>
 首先在对象的私有属性上进行查找，如果私有属性中存在，则获取私有属性值， 反之，则通过__proto__找到所属类的原型（类的原型上定义的方法和属性都是当前实例公用的），原型上存在的话则获取公有的属性值， 如果原型上也没有，则继续通过原型上的__proto__继续向上查找，一直找到Object.prototype为止。
 ```
+console.log(p1.__proto__.__proto__ === Object.prototype); //true
+console.log(p1.__proto__.__proto__.constructor === Object); //true
 //查找属性的时候查到 Object.prototype 就停止查找了。
 console.log(Object.prototype.__proto__ === null) // true
 ```

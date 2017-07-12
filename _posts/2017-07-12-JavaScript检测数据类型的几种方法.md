@@ -88,7 +88,7 @@ funtion isArray(obj) { //判断一个变量是否是数组
 }
 ```
 
-## jQuery中的方案
+## jQuery中的方法
 ```
 var class2type = {} ;
 "Boolean Number String Function Array Date RegExp Object Error".split(" ").forEach(function(e,i){

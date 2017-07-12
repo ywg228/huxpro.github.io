@@ -47,7 +47,12 @@ console.log(Person.prototype.constructor === Person); // true
 ![constructor](http://images.cnitblog.com/blog/138012/201409/172130097842386.png)
 
 ## 原型链
-当读取实例的属性时，如果找不到，就会查找与对象关联的原型中的属性，如果还查不到，就去找原型的原型，一直找到最顶层为止。
+通过 对象名.属性名 的方式获取属性值：<br>
+首先在对象的私有属性上进行查找，如果私有属性中存在，则获取私有属性值， 反之，则通过__proto__找到所属类的原型（类的原型上定义的方法和属性都是当前实例公用的），原型上存在的话则获取公有的属性值， 如果原型上也没有，则继续通过原型上的__proto__继续向上查找，一直找到Object.prototype为止。
+```
+//查找属性的时候查到 Object.prototype 就停止查找了。
+console.log(Object.prototype.__proto__ === null) // true
+```
 ## 完整的原型链图
 ![原型链](http://www.mollypages.org/tutorials/jsobj_full.jpg)
 图片来自  [mollypages.org](http://www.mollypages.org/tutorials/js.mp) 

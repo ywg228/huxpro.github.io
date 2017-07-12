@@ -266,7 +266,8 @@ Fn2(fn1); //10
 #### 封装变量
 ```
 function isFirstLoad() {
-  var _list = [];
+  //在isFirstLoad外部，根本不可能修改_list的值
+  var _list = [];
   return function (id) {
     if (_list.indexOf(id) >= 0) {
       return false;

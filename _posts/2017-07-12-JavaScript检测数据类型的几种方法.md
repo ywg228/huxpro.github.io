@@ -120,17 +120,28 @@ funtion isArray(obj) { //判断一个变量是否是数组
 
 ## jQuery中的方法
 ```
-var class2type = {} ;
-"Boolean Number String Function Array Date RegExp Object Error".split(" ").forEach(function(e,i){
-    class2type[ "[object " + e + "]" ] = e.toLowerCase();
-}) ;
-//当然为了兼容IE低版本，forEach需要一个polyfill，不作细谈了。
-function _typeof(obj){
-    if ( obj == null ){
-        return String( obj );
+var type = function (obj) {
+        var class2type = {};
+        //把所有的数据类型遍历进class2type里面 jQuery中用的是自己封装的each  forEach() 是es5新增的方法
+        'Boolean Number String Function Array Date RegExp Object Error Symbol'.split(' ').forEach(function (name, i) {
+            class2type['[object ' + name + ']'] = name.toLowerCase();
+        });
+
+        if (obj == null) { // obj === null ||  obj === undefined
+            return obj + '';
+        }
+
+        return typeof obj === 'object' || typeof obj === 'function' ?
+            class2type[Object.prototype.toString.call(obj)] || 'object' :
+            typeof obj;
     }
-    return typeof obj === "object" || typeof obj === "function" ?
-    class2type[ Object.prototype.toString.call(obj) ] || "object" :
-        typeof obj;
-}
+
+    console.log(type(1)); //number
+    console.log(type('1')); //string
+    console.log(type(true)); //boolean
+    console.log(type([])); //array
+    console.log(type({})); //object
+    console.log(type(new RegExp())); //regexp
+    console.log(type(new Date())); //date
+    console.log(type(function () {})); //function
 ```

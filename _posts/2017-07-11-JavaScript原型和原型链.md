@@ -186,7 +186,13 @@ function Person() {
     console.log(this.age);
   }
 }
+//重构原型对象:开辟一个新的堆内存，存储公用的属性和方法，把浏览器默认给Person.prototype开辟的哪个堆内存给替换掉
 Person.prototype = {
+  /**
+  *  只有浏览器默认给Person.prototype的开辟的堆内存才有constructor这个属性，自己手动开辟的堆内存没有这个属性
+  *  这样constructor的指向就不再是Person而是Object
+  *  为了与原来保持一致，我们需要手动增加constructor的指向
+  */
   constructor: Person,
   age: 30,
   getName: function () {

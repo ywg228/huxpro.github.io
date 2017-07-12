@@ -46,6 +46,8 @@ console.log(Person.prototype.constructor === Person); // true
 浏览器默认给 prototype 开辟的堆内存中自带一个属性：constructor，指向当前类本身
 ![constructor](http://images.cnitblog.com/blog/138012/201409/172130097842386.png)
 
+## 原型链
+当读取实例的属性时，如果找不到，就会查找与对象关联的原型中的属性，如果还查不到，就去找原型的原型，一直找到最顶层为止。
 ## 完整的原型链图
 ![原型链](http://www.mollypages.org/tutorials/jsobj_full.jpg)
 图片来自  [mollypages.org](http://www.mollypages.org/tutorials/js.mp) 

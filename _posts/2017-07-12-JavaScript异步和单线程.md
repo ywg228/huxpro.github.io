@@ -15,10 +15,11 @@ tags: JavaScript
 console.log(100);
 alert(200); 
 console.log(300);
+//弹框关闭后才会执行下面的代码
 ```
 ## 异步
 异步加载又叫非阻塞加载，浏览器在下载执行js的同时，还会继续进行后续页面的处理。<br>
-**异步代码需要等待js引擎处理完同步代码之后才会执行。**
+**只有在当前的所有同步任务执行完毕后，才会执行异步任务。**
 
 ### 异步使用的场景
 #### 1. 定时任务：setTimeout、setInerval
@@ -57,14 +58,25 @@ document.getElementById('btn1).addEventListener('click', function() {
 console.log('end');
 ```
 
+### setTimeout(fn, 0)
+将回调函数fn立刻插入任务队列，等待执行，而不是立即执行。
+```
+setTimeout(function() {
+    console.log('a')
+}, 0);
+for(var i = 0; i < 99999; i++) {}
+console.log('b');
+// 结果：b  a
+```
+
 ## 单线程
 触发和执行并不是同一概念，计时器的回调函数一定会在指定delay的时间后被触发，但并不一定立即执行，可能需要等待。<br>
 
-所有JavaScript代码是在一个线程里执行的，**像定时任务和事件绑定只有在JS单线程空闲时才执行**。<br>
+所有JavaScript代码是在一个线程里执行的，**像定时任务和事件监听等操作只有在JS单线程空闲时才会执行**。<br>
 
 **JavaScript引擎是单线程运行的,浏览器无论在什么时候都只且只有一个线程在运行JavaScript程序**<br>
 
-但是浏览器内部是多线程的,这些线程在内核控制下相互配合以保持同步。在处理js的异步上浏览器内核的实现可能有多个进程:Javascript引擎线程、界面渲染线程、浏览器事件触发线程、HTTP请求线程……这些线程的名字为渲染引擎、网络、js解析器等。<br>
+但是**浏览器内部是多线程的**，你的一些I/O操作、定时器的计时和事件监听（click, keydown...）等都是由浏览器提供的其他线程来完成的。<br>
 
 Javascript除了一个主线程外,还配有一个代码队列,这个队列用以存放定时器、HTTP请求、事件响应的回调。<br>
 
@@ -77,6 +89,8 @@ setTimeout(function(){
 while(true){}
 ```
 
+## 任务队列和事件循环
+
 ## 面试题
 ```
 console.log(1);
@@ -88,7 +102,7 @@ setTimeout(function () {
  console.log(4);
 }, 1000);
 console.log(5);
-//1 3 5 2 4
+//结果：1 3 5 2 4
 ```
 ```
 /**

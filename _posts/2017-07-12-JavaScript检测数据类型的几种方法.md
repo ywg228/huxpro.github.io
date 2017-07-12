@@ -27,8 +27,10 @@ console.log(typeof []); //'object' 无效
 console.log(typeof  new Date()); //object 无效
 console.log(typeof  new RegExp());  //object 无效
 ```
-**局限性：**<br>
-  对于Array，Null，RegExp等对象数据类型使用typeof一律返回object，不能检测。<br>
+#### 局限性：
+对于Array，RegExp，Date等对象数据类型使用typeof一律返回object，不能检测。<br>
+#### 应用：
+typeof只能用于基本数据类型检测，对于null还有bug。<br>
 在实际的项目应用中，typeof只有两个用途，就是检测一个元素是否为undefined，或者是否为function。
 ```
 if(typeof a!='undefined'){ //判断一个变量是否存在

@@ -69,7 +69,7 @@ function fn() {}
 console.log(fn instanceof Function);            //true
 console.log(fn instanceof Object);              //true
 ```
-#### 局限性：
+#### 局限性
 对于基本数据类型来说，字面量创建和实例方式创建出来的结果有区别，从严格意义上来讲，只有实例创建出来的结果才是标准对象数据类型的值，所以**不能用来检测和处理字面量方式创建的基本数据类型的值**。<br>
 instanceof不可以检测null和undefined
 #### 适用条件
@@ -87,10 +87,10 @@ var reg = /^$/;
 console.log(reg.constructor === RegExp); //true
 console.log(reg.constructor === Object); //false
 ```
-#### 局限性：
+#### 局限性
 把类的原型进行重写，在重写的过程中很有可能把之前的constructor给覆盖了,这样检测的结果是不准确的。 <br>
 constructor不可以检测null和undefined
-#### 适用条件：
+#### 适用条件
 constructor指向的是最初创建者，而且容易伪造，不适合做类型判断；
 
 ## Object.prototype.toString.call()  最准确最常用的方式
@@ -109,7 +109,7 @@ console.log(Object.prototype.toString.call(null)); //'[object Null]'
 console.log(Object.prototype.toString.call(undefined)); //'[object Undefined]'
 console.log(Object.prototype.toString.call(function(){})); //'[object Function]'
 ```
-#### 适用条件：
+#### 适用条件
 toString适用于ECMA内置JavaScript类型（包括基本数据类型和内置对象）的类型判断。
 #### 应用
 ```

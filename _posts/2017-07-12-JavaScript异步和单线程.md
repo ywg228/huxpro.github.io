@@ -56,7 +56,7 @@ img.onload = function() {
 img.src = 'xxx.png';
 console.log('end');
 ```
-#### 3. 事件监听：
+#### 3. 事件监听
 ```
 console.log('start');
 document.getElementById('btn1).addEventListener('click', function() {

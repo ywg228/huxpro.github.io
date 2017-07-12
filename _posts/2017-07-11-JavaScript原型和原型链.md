@@ -119,7 +119,7 @@ p1.name = 'lisi';
 console.log(p1.name); // lisi
 console.log(p1.age); // 20
 ```
-#### 5.所有函数对象的__proto__都指向Function.prototype，它是一个空函数
+#### 5. 所有函数对象的__proto__都指向Function.prototype，它是一个空函数
 ```
 Number.__proto__ === Function.prototype  // true
 Number.constructor == Function //true

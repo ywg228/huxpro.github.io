@@ -22,8 +22,8 @@ console.log(Person.name) //undefined
 如图：<br>
 ![prototype](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype1.png)
 
-## __proto__
-每一个JS对象(除了 null )都具有的一个 __proto__ 属性，这个属性指向对象所属类的原型。即p1.__proto__ === Person.prototype ->  true
+##  __proto__
+每一个JS对象(除了 null )都具有的一个__proto__属性，这个属性指向对象所属类的原型。即p1.__proto__=== Person.prototype ->  true
 ```
 function Person() {
 }

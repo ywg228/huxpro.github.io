@@ -19,7 +19,7 @@ var p1 = new Person();
 console.log(p1.name); //hello
 console.log(Person.name) //undefined
 ```
-如图：
+如图：<br>
 ![prototype](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype1.png)
 
 ## __proto__
@@ -30,7 +30,7 @@ function Person() {
 var p1 = new Person();
 console.log(p1.__proto__ === Person.prototype); // true
 ```
-如图：
+如图：<br>
 ![__proto__](https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype2.png)
 
 ## constructor
@@ -40,7 +40,7 @@ function Person() {
 }
 console.log(Person.prototype.constructor === Person); // true
 ```
-如图：
+如图：<br>
 ![constructor](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype3.png)
 
 浏览器默认给 prototype 开辟的堆内存中自带一个属性：constructor，指向当前类本身

@@ -67,6 +67,10 @@ console.log(reg.constructor === Object); //false
  constructor不可以检测null和undefined
  
 ## Object.prototype.toString.call()  最准确最常用的方式
+首先获取Object原型的toString方法，让方法执行，并且改变this指向，让toString方法中的this指向第一个参数的值。<br>
+Object.prototype.toString作用是返回当前方法的执行主体（方法中this）所属类的详细信息。<br>
+'[object Array]':第一个object代表当前实例是对象数据类型的，注意是小写，第二个Array代表的是this所属的类是Array。 <br>
+Object.prototype.toString.call()可以检测null和undefined，第二、三种方法不可以检测null和undefined
 ```
 console.log(Object.prototype.toString.call(1)); //'[object Number]'
 console.log(Object.prototype.toString.call('1')); //'[object String]'

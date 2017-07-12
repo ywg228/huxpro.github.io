@@ -65,7 +65,10 @@ console.log(Object.prototype.__proto__ === null) // true
 图片来自  [mollypages.org](http://www.mollypages.org/tutorials/js.mp) 
 
 ## 注意点
+### 只有函数才有prototype属性
 ### p1.constructor === Person
 当获取 p1.constructor 时，其实 p1 中并没有 constructor 属性,当不能读取到constructor 属性时，会从 p1 的原型也就是 Person.prototype 中读取，
 正好原型中有该属性，所以：p1.constructor === Person.prototype.constructor === Person
-###
+### 所有prototype的__proto__都指向Object.prototype
+
+

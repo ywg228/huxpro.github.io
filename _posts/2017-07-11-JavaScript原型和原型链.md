@@ -11,6 +11,7 @@ tags: JavaScript
 
 ## prototype
 每个**函数**都有一个 prototype 属性，它存储的值是一个对象数据类型的值，浏览器默认为它开辟一个堆内存。
+这个属性是一个指针，指向一个对象，这个对象的用途就是包含所有实例共享的属性和方法（我们把这个对象叫做原型对象）。
 ```
 function Person() {
 }
@@ -23,7 +24,8 @@ console.log(Person.name) //undefined
 ![prototype](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype1.png)
 
 ##  __proto__
-每一个JS对象(除了 null )都具有的一个__proto__属性，这个属性指向对象所属类的原型。
+每一个**JS对象**(除了 null )都具有的一个__proto__属性，这个属性指向当前对象所属构造函数的原型。<br>
+这也保证了实例能够访问在构造函数原型中定义的属性和方法。
 ```
 function Person() {
 }
@@ -34,7 +36,7 @@ console.log(p1.__proto__ === Person.prototype); // true
 ![__proto__](https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype2.png)
 
 ## constructor
-每个原型都有一个 constructor 属性指向关联的构造函数。 
+每个**原型**都有一个 constructor 属性指向关联的构造函数。 
 ```
 function Person() {
 }

@@ -62,7 +62,7 @@ console.log(p1.__proto__.constructor === Person); //true
 ![constructor](http://images.cnitblog.com/blog/138012/201409/172130097842386.png)
 
 ## 原型链模式
-通过 对象名.属性名 的方式获取属性值：<br>
+访问一个对象的属性：<br>
 首先在对象的私有属性上进行查找，如果私有属性中存在，则获取私有属性值， 反之，则通过__proto__找到所属构造函数的原型（构造函数的原型上定义的方法和属性都是当前实例公用的），原型上存在的话则获取公有的属性值， 如果原型上也没有，则继续通过原型上的__proto__继续向上查找，一直找到Object.prototype为止，这就是原型链。
 ```
 console.log(p1.__proto__.__proto__ === Object.prototype); //true
@@ -72,6 +72,30 @@ console.log(Object.prototype.__proto__ === null) // true
 ```
 如图：<br>
 ![原型链](https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype5.png)
+### 判断某对象是否含有特定的自身属性 hasOwnProperty
+需要注意的是，此方法无法检查某对象的原型链中是否具有该属性，该属性必须是对象本身的一个成员。
+```
+//获取对象所有的自身属性
+function Person() {
+   this.name = 'zhangsan';
+   this.age = 20;
+}  
+Person.prototype.getName = function(){
+    console.log(this.name);
+}
+Person.prototype.getAge = function(){
+    console.log(this.age);
+}
+var p1 = new Person();
+for(var item in p1) {
+    if(p1.hasOwnProperty(item)) {
+        console.log(item); //name age
+    }
+}
+```
+### 原型继承
+由于所有对象的原型链都会找到Object.prototype，因此所有的对象都会有Object.prototype中的方法，这就是“原型继承”。
+
 ## 完整的原型链图
 ![原型链](http://www.mollypages.org/tutorials/jsobj_full.jpg)
 图片来自  [mollypages.org](http://www.mollypages.org/tutorials/js.mp) 
@@ -82,6 +106,17 @@ console.log(Object.prototype.__proto__ === null) // true
 当获取 p1.constructor 时，其实 p1 中并没有 constructor 属性,当不能读取到constructor 属性时，会从 p1 的原型也就是 Person.prototype 中读取，
 正好原型中有该属性，所以：p1.constructor === Person.prototype.constructor === Person
 ### 所有prototype的__proto__都指向Object.prototype
+### 构造函数的原型上定义的方法和属性都是当前实例公用的
+```
+function Person() {
+}
+Person.prototype.name = 'shangsan';
+Person.prototype.age = '20';
+var p1 = new Person();
+p1.name = 'lisi';
+console.log(p1.name); // lisi
+console.log(p1.age); // 20
+```
 
 ## 原型链模式中的this
 常见两种情况：<br>

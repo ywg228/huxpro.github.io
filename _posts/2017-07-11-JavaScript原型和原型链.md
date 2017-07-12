@@ -58,8 +58,9 @@ console.log(p1.__proto__.constructor === Person); //true
 如图：<br>
 ![constructor](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype3.png)
 
-浏览器默认给 prototype 开辟的堆内存中自带一个属性：constructor，指向当前类本身
-![constructor](http://images.cnitblog.com/blog/138012/201409/172130097842386.png)
+prototype会在函数定义的时候产生， 浏览器默认为它开辟一个堆内存。<br>
+浏览器默认给 prototype 开辟的堆内存中自带一个属性：constructor，指向当前构造函数本身。<br>
+![constructor](http://upload-images.jianshu.io/upload_images/1430985-b650bc438f236877.jpg)
 
 ## 原型链模式
 访问一个对象的属性：<br>

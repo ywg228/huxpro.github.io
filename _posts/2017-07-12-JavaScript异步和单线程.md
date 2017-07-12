@@ -77,16 +77,30 @@ setTimeout(function(){
 while(true){}
 ```
 
-## 一道面试题
-
+## 面试题
 ```
-window.setTimeout(function (){
+console.log(1);
+setTimeout(function () {
+  console.log(2)
+}, 0);
+console.log(3);
+setTimeout(function () {
+ console.log(4);
+}, 1000);
+console.log(5);
+//1 3 5 2 4
+```
+```
+/**
+ * js的工作机制是：当线程中没有执行任何同步代码的前提下才会执行异步代码，
+ * setTimeout是异步代码，所以setTimeout只能等js空闲才会执行，但死循环是永远不会空闲的，所以setTimeout也永远不会执行。
+ */
+setTimeout(function (){
     console.log('ok');
 },1000);
-
 while (true){}
 alert('end');
-
+//死循环导致alert不执行,setTimeout也不执行。
 ```
 
 

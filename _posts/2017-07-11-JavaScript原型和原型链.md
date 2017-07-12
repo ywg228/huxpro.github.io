@@ -119,6 +119,37 @@ p1.name = 'lisi';
 console.log(p1.name); // lisi
 console.log(p1.age); // 20
 ```
+#### 5.所有函数对象的__proto__都指向Function.prototype，它是一个空函数
+```
+Number.__proto__ === Function.prototype  // true
+Number.constructor == Function //true
+
+Boolean.__proto__ === Function.prototype // true
+Boolean.constructor == Function //true
+
+String.__proto__ === Function.prototype  // true
+String.constructor == Function //true
+
+// 所有的构造器都来自于Function.prototype，甚至包括根构造器Object及Function自身
+Object.__proto__ === Function.prototype  // true
+Object.constructor == Function // true
+
+// 所有的构造器都来自于Function.prototype，甚至包括根构造器Object及Function自身
+Function.__proto__ === Function.prototype // true
+Function.constructor == Function //true
+
+Array.__proto__ === Function.prototype   // true
+Array.constructor == Function //true
+
+RegExp.__proto__ === Function.prototype  // true
+RegExp.constructor == Function //true
+
+Error.__proto__ === Function.prototype   // true
+Error.constructor == Function //true
+
+Date.__proto__ === Function.prototype    // true
+Date.constructor == Function //true
+```
 
 ## 原型链模式中的this
 常见两种情况：<br>

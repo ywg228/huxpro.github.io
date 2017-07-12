@@ -161,3 +161,5 @@ Person.prototype.getName(); //undefined
 p1.getAge(); //p1.age -> 20
 p1.__proto__.getAge(); //p1.__proto__.age -> 30
 ```     
+
+## 原型继承

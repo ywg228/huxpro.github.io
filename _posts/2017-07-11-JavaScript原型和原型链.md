@@ -42,3 +42,4 @@ console.log(Foo.prototype.constructor === Foo); // true
 
 完整的原型链图：
 ![原型链](http://www.mollypages.org/tutorials/jsobj_full.jpg)
+图片来自  [原型链图](http://www.mollypages.org/tutorials/js.mp "mollypages.org") 

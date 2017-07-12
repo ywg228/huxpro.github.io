@@ -11,7 +11,7 @@ tags: JavaScript
 
 ## 前言
 JavaScript中有6种基本数据类型：number、boolean、string、null、undefined、symbol（es6新增），1种引用数据类型：object(array,function)。 <br>
-判断js中的数据类型有四种方法：typeof、instanceof、 constructor、 prototype。
+判断js中的数据类型有四种方法：typeof、instanceof、 constructor、 toString。
 
 ## typeof
 检测数据类型的运算符，返回一个字符串，包含对应的数据类型：number string boolean object function undefined。

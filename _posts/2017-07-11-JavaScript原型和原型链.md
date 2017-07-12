@@ -23,7 +23,7 @@ console.log(Person.name) //undefined
 ![prototype](https://raw.githubusercontent.com/mqyqingfeng/Blog/master/Images/prototype1.png)
 
 ## __proto__
-每一个JS对象(除了 null )都具有的一个 __proto__ 属性，这个属性指向对象所属类的原型。即f1.__proto__ === Foo.prototype ->  true
+每一个JS对象(除了 null )都具有的一个 __proto__ 属性，这个属性指向对象所属类的原型。即p1.__proto__ === Person.prototype ->  true
 ```
 function Person() {
 }
@@ -34,7 +34,7 @@ console.log(p1.__proto__ === Person.prototype); // true
 ![__proto__](https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype2.png)
 
 ## constructor
-每个原型都有一个 constructor 属性指向关联的构造函数。 Foo.prototype.constructor === Foo ->  true 
+每个原型都有一个 constructor 属性指向关联的构造函数。 Person.prototype.constructor === Person ->  true 
 ```
 function Person() {
 }

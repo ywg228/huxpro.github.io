@@ -104,6 +104,7 @@ while(true){}
 
 ## 面试题
 ```
+//同步代码执行完后再执行异步代码
 console.log(1);
 setTimeout(function () {
   console.log(2)

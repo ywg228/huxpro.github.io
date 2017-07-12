@@ -17,7 +17,9 @@ alert(200);
 console.log(300);
 ```
 ## 异步
-异步加载又叫非阻塞加载，浏览器在下载执行js的同时，还会继续进行后续页面的处理。
+异步加载又叫非阻塞加载，浏览器在下载执行js的同时，还会继续进行后续页面的处理。<br>
+**异步线程需要等待js引擎处理完同步代码之后才会执行。所以异步总是晚于同步的**
+
 ### 异步使用的场景
 #### 1. 定时任务：setTimeout、setInerval
 ```
@@ -54,3 +56,37 @@ document.getElementById('btn1).addEventListener('click', function() {
 });
 console.log('end');
 ```
+
+## 单线程
+触发和执行并不是同一概念，计时器的回调函数一定会在指定delay的时间后被触发，但并不一定立即执行，可能需要等待。<br>
+
+所有JavaScript代码是在一个线程里执行的，**像定时任务和事件绑定只有在JS单线程空闲时才执行**。<br>
+
+**JavaScript引擎是单线程运行的,浏览器无论在什么时候都只且只有一个线程在运行JavaScript程序**<br>
+
+但是浏览器内部是多线程的,这些线程在内核控制下相互配合以保持同步。在处理js的异步上浏览器内核的实现可能有多个进程:Javascript引擎线程、界面渲染线程、浏览器事件触发线程、HTTP请求线程……这些线程的名字为渲染引擎、网络、js解析器等。<br>
+
+Javascript除了一个主线程外,还配有一个代码队列,这个队列用以存放定时器、HTTP请求、事件响应的回调。<br>
+
+![单线程](http://images.cnblogs.com/cnblogs_com/wancy86/399808/o_js1.jpg)
+
+```
+setTimeout(function(){
+  alert('ok'); //这个alert永远不会被执行
+},0);
+while(true){}
+```
+
+## 一道面试题
+
+```
+window.setTimeout(function (){
+    console.log('ok');
+},1000);
+
+while (true){}
+alert('end');
+
+```
+
+

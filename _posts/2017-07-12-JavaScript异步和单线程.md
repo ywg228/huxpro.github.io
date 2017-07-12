@@ -20,7 +20,14 @@ console.log(300);
 ## 异步
 异步加载又叫非阻塞加载，浏览器在下载执行js的同时，还会继续进行后续页面的处理。<br>
 **只有在当前的所有同步任务执行完毕后，才会执行异步任务。**
-
+```
+setTimeout(function() {
+    console.log('我是异步执行的回调函数');
+}, 0);
+for(var i = 0; i < 99999; i++) {}
+console.log('end');
+//结果: end  我是异步执行的回调函数
+```
 ### 异步使用的场景
 #### 1. 定时任务：setTimeout、setInerval
 ```
@@ -49,7 +56,7 @@ img.onload = function() {
 img.src = 'xxx.png';
 console.log('end');
 ```
-#### 3. 事件绑定：
+#### 3. 事件监听：
 ```
 console.log('start');
 document.getElementById('btn1).addEventListener('click', function() {

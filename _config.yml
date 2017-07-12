@@ -1,10 +1,10 @@
 # Site settings
-title: 技术小屋  #博客标题
-SEOTitle: 程序猿的博客 | Ywg Blog    #显示在浏览器搜索的时候显示的标题
+title: Mr.Yang  #博客标题
+SEOTitle: Mr.Yang的博客 | Mr.Yang Blog    #显示在浏览器搜索的时候显示的标题
 header-img: img/home-bg.jpg   #显示在首页的背景图片
 email: ywg228@gmail.com
-description: "关于前端 | 程序猿"   #网站介绍
-keyword: "Ywg Blog, 博客, 个人网站, 互联网, 前端"    #关键词
+description: "关于前端 | Mr.Yang"   #网站介绍
+keyword: "Mr.Yang Blog, 博客, 个人网站, 互联网, 前端"    #关键词
 url: "ywg228.github.io"              # 博客地址 绝对路径
 baseurl: ""          # for example, '/blog' if your blog hosted on 'host/blog'
 

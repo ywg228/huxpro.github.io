@@ -94,11 +94,20 @@ for(var item in p1) {
     }
 }
 ```
-对象的原型链是沿着__proto__这条线走的，因此在查找p1.hasOwnProperty属性时，就会顺着原型链一直查找到Object.prototype。
-#### 2. 原型继承
-由于所有对象的原型链都会找到Object.prototype，因此所有的对象都会有Object.prototype中的方法，这就是“原型继承”。
+对象的原型链是沿着__proto__这条线走的，因此在查找p1.hasOwnProperty属性时，就会顺着原型链一直查找到Object.prototype。<br>
 
-#### 3. 完整的原型链图
+而**isPrototypeOf** 则是用来判断一个对象是否存在于另一个对象的原型链上。
+```
+console.log(Person.prototype.isPrototypeOf(p1)); //true
+```
+#### 2. instanceof 运算符用来检测运行时一个对象是否是构造函数的一个实例,
+```
+if(p1 instanceof Person) {
+}
+```
+#### 3. 原型继承
+由于所有对象的原型链都会找到Object.prototype，因此所有的对象都会有Object.prototype中的方法，这就是“原型继承”。
+#### 4. 完整的原型链图
 ![原型链](http://www.mollypages.org/tutorials/jsobj_full.jpg)
 图片来自  [mollypages.org](http://www.mollypages.org/tutorials/js.mp) 
 

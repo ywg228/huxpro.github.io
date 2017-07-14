@@ -140,6 +140,12 @@ http://localhost:8080 和 https://example.com 不同，协议、域名、端口�
 ``` 
 XMLHttpRequest cannot load XXX. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
 ``` 
+但是有**三个标签允许跨域加载资源**：
+``` 
+<img src="xxx">
+<link href="xxx">
+<script src="xxx"></script>
+``` 
 那如何跨域请求？这就需要JSONP了。
 ### 核心原理
 利用script标签可以跨域请求的特性，可以通过向页面中动态添加script标签来完成对跨域资源的访问<br>

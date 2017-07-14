@@ -10,7 +10,7 @@ tags: JavaScript
 ---
 
 ## AJAX 
-一种请求数据的方式，不需要刷新整个页面；核心是 XMLHttpRequest 对象 <br>
+Asynchronous JavaScript and XML，异步请求，一种请求数据的方式，不需要刷新整个页面，局部刷新，核心是 XMLHttpRequest 对象 <br>
 #### 请求步骤
 1. 创建XMLHttpRequest对象
 2. 连接服务器
@@ -112,6 +112,16 @@ function formatParams(data) {
 ``` 
 
 #### AJAX不能跨域请求！
+
+### 优缺点
+#### 优点
+1. 无刷新更新数据，局部刷新，
+2. 异步与服务器通信，非阻塞方式提升了用户体验
+3. 不需要任何浏览器插件，但需要用户允许 JavaScript在浏览器上执行 。
+#### 缺点
+1. 破坏浏览器的后退与加入收藏书签功能。在用AJAX动态更新页面的情况下，用户无法回到前一个页面状态。
+
+### 适用场景
 
 ## JSONP 
 一种跨域请求方式。

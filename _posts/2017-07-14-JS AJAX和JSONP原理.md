@@ -1,12 +1,12 @@
 ---
 layout:     post
-title:      JavaScript  AJAX和JSONP升
-subtitle:   学习笔记 
+title:      JS AJAX和JSONP
+subtitle:   JS基础
 date:       2017-07-14
 author:     Ywg
 header-img: img/home-bg.jpg
 catalog:    true
-tags: JavaScript 
+tags: JavaScript JS基础
 ---
 
 ## AJAX 

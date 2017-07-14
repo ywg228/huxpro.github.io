@@ -86,7 +86,6 @@ function ajax(params) {
                     response = xhr.responseText; //字符串数据
                     
                 }
-
                 //成功回调
                 params.success && params.success(response);
             } else {

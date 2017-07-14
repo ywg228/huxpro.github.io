@@ -37,57 +37,57 @@ Asynchronous JavaScript and XML，异步请求数据，不需要刷新整个页�
 function ajax(params) {
     params = params || {};
     if (!params.url)return;
-    //请求方式 默认GET
-    params.type = (params.type || 'GET').toUpperCase();
+    params.data = params.data || {};
+    params.async = params.async || true; //是否异步请求 默认true
+    params.type = (params.type || 'GET').toUpperCase();  //请求方式 默认GET
+
     // 避免有特殊字符，必须格式化传输数据
     params.data = formatParams(params.data);
 
     //1.创建XMLHttpRequest对象
     var xhr = null;
-    if(window.XMLHttpRequest) {  //IE6+
-        xhr = new XMLHttpRequest();
-    }else { //IE6及其以下版本浏览器
+    if (window.XMLHttpRequest) {  //非IE6
+        xhr = new XMLHttpRequest();
+    } else { //IE6及其以下版本浏览器
         xhr = new ActiveXObject('Microsoft.XMLHTTP');
     }
 
     //2.连接服务器并发送请求
-    if(params.type == 'GET') {
+    if (params.type == 'GET') {
         //连接服务器 三个参数：请求方式、请求地址(get方式时，传输数据是加在地址后的)、是否异步请求(同步请求的情况极少)
-        xhr.open('GET', params.url + '?' + params.data, true);
+        xhr.open('GET', params.url + '?' + params.data, params.async);
         //发送请求
         xhr.send(null);
-    }else if(params.type == 'POST') {
-        xhr.open('POST', params.url, true);
+    } else if (params.type == 'POST') {
+        xhr.open('POST', params.url, params.async);
         //设置表单提交时的内容类型
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
         //发送请求并传输数据
         xhr.send(params.data);
     }
 
-    //3.接受响应数据，只要 readyState 的值变化，就会调用 readystatechange 事件
-    xhr.onreadystatechange = function () {
+    //3.接受响应数据
+    xhr.onreadystatechange = function () {
         //readyState为4表示已接受到全部的响应数据
-        if(xhr.readyState == 4) {
-            //响应的HTTP状态码，以2开头的都是成功
-            //304表示从缓存中获取 上面代码已经在每次请求时都加了随机数，所以无需从缓存中取值
-            var status = xhr.status;
+        if (xhr.readyState == 4) {
+            //响应的HTTP状态码，以2开头的都是成功
+            //304表示从缓存中获取 上面代码已经在每次请求时都加了随机数，所以无需从缓存中取值
+            var status = xhr.status;
             if (status >= 200 && status < 300) {
-                
-                var response = '';
+
+                var response = xhr.responseText; //默认字符串数据
                 // 判断接受数据的内容类型
                 var type = xhr.getResponseHeader('Content-type');
-                if(type.indexOf('xml') !== -1 && xhr.responseXML) {
-                    
-                    response = xhr.responseXML; //XML 对应的 document 类型
-                    
-                } else if(type === 'application/json') {
-                    
-                    response = JSON.parse(xhr.responseText); //JSON数据
-                    
-                } else {
-                    
-                    response = xhr.responseText; //字符串数据
-                    
+                if (type.indexOf('xml') !== -1 && xhr.responseXML) {
+
+                    response = xhr.responseXML; //Document对象响应
+
+                } else if (type === 'application/json') { //JSON数据
+                    try {
+                        response = JSON.parse(response);
+                    }catch (e) {
+                        response = eval('(' + response + ')');
+                    }
                 }
                 //成功回调
                 params.success && params.success(response);
@@ -97,13 +97,12 @@ function ajax(params) {
         }
     }
 }
-
 //格式化参数
 function formatParams(data) {
     var arr = [];
     for (var name in data) {
-        //encodeURIComponent()用于对 URI 中的某一部分进行编码，会对它发现的任何非标准字符进行编码
-        arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+        //encodeURIComponent()用于对 URI 中的某一部分进行编码
+        arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
     }
     //添加一个随机数参数，防止缓存
     arr.push(('v=' + Math.random()).replace('.', ''));

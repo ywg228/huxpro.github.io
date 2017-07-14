@@ -105,7 +105,7 @@ function formatParams(data) {
         arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
     }
     //添加一个随机数参数，防止缓存
-    arr.push(('v=' + random()).replace('.'));
+    arr.push(('v=' + random()).replace('.', ''));
     return arr.join('&');
 }
 
@@ -140,8 +140,108 @@ XMLHttpRequest cannot load XXX. No 'Access-Control-Allow-Origin' header is prese
 #### 组成
 由两部分组成：回调函数和数据，回调函数一般是在浏览器控制，作为参数发往服务器端（当然，你也可以固定回调函数的名字，但客户端和服务器端的名称一定要一致）。当服务器响应时，服务器端就会把该函数和数据拼成字符串返回。 著作权归作者所有。
 #### 请求步骤
-1. 请求阶段：浏览器创建一个 script 标签，并给其src 赋值(类似 http://example.com/api/?callback=jsonpCallback）。
+1. 请求阶段：浏览器创建一个 script 标签，并给其src 赋值(类似 http://suggestion.baidu.com/su?wd=jsonp&cb=jsonpCallback）。
 2. 发送请求：当给script的src赋值时，浏览器就会发起一个请求。
 3. 数据响应：服务端将要返回的数据作为参数和函数名称拼接在一起(格式类似”jsonpCallback({name: 'abc'})”)返回。当浏览器接收到了响应数据，由于发起请求的是 script，所以相当于直接调用 jsonpCallback 方法，并且传入了一个参数。
+
+#### JSONP的简单封装
+```
+/**
+ * jsonp跨域请求简单封装
+ * 使用方式：
+ * jsonp({
+            //百度搜索数据地址
+            url: 'http://suggestion.baidu.com/su',
+            //数据接口
+            data: {
+                'wd': 'jsonp'
+            },
+            callback: 'cb', //
+            //响应成功
+            success: function (res) {
+               console.log(res.s);
+            },
+            //响应超时
+            fail: function (msg) {
+                console.log(msg.message);
+            }
+        });
+ */
+function jsonp(params) {
+    params = params || {};
+    if (!params.url)return;
+
+    params.data = params.data || {};
+    //设置响应时间，默认为15秒（后台为3秒）
+    params.timeout = params.timeout || 15000;
+
+    //回调函数 可以设置为合法的字符串
+    var callbackName = 'cb' + (~~(Math.random() * 0xffffff)).toString(16);
+
+    var head = document.getElementsByTagName('head')[0];
+
+    //设置传递给后台的回调参数名
+    params.data[params.callback] = callbackName;
+
+    params.data = formatParams(params.data);
+
+    //创建script标签并加入到页面中
+    var script = document.createElement('script');
+
+    //发送请求
+    script.src = params.url + '?' + params.data;
+
+    head.appendChild(script);
+
+    //数据响应回调函数
+    window[callbackName] = function (res) {
+
+        //删除之前插入的script（因为script只加载一次，并且此时已收到数据）
+        head.removeChild(script);
+
+        clearTimeout(script.timer);
+
+        window[callbackName] = null;
+
+        //成功回调
+        params.success && params.success(res);
+
+    };
+
+    //为了得知此次请求是否成功，设置超时处理
+    if (params.timeout) {
+
+        script.timer = setTimeout(function () {
+
+            //当响应时间超时后，使后续的函数不执行
+            window[callbackName] = null;
+
+            head.removeChild(script);
+
+            //返回错误信息
+            params.fail && params.fail({message: '超时'});
+
+        }, params.timeout);
+
+    }
+}
+
+//格式化参数
+function formatParams(data) {
+    var arr = [];
+    for (var name in data) {
+        //encodeURIComponent()用于对 URI 中的某一部分进行编码
+        arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+    }
+    //添加一个随机数参数，防止缓存
+    arr.push(('v=' + random()).replace('.', ''));
+    return arr.join('&');
+}
+
+// 获取随机数
+function random() {
+    return Math.floor(Math.random() * 10000 + 500);
+}
+```
 
 

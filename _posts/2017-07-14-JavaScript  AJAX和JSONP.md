@@ -110,7 +110,7 @@ function formatParams(data) {
     return arr.join('&');
 }
 ``` 
-
+![](http://images2015.cnblogs.com/blog/63651/201612/63651-20161218091406308-2001323373.png)
 #### AJAX不能跨域请求！
 
 ### 优缺点

@@ -1,12 +1,12 @@
 ---
 layout:     post
-title:      JavaScript call、apply和bind改变this指向
+title:      JS call、apply和bind改变this指向
 subtitle:   学习笔记
 date:       2017-07-11
 author:     Ywg
 header-img: img/home-bg.jpg
 catalog:    true
-tags: JavaScript 
+tags: JavaScript JS深入
 ---
 
 ### 前言

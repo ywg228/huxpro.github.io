@@ -19,6 +19,20 @@ tags: JavaScript
 
 #### AJAX的简单封装
 ``` 
+/**
+ * 使用方式：
+ *  ajax({
+        url : '',
+        type: 'GET',
+        data: {},
+        success: function (res) {
+            console.log(res);
+        },
+        fail: function (status) {
+            console.log(status);
+        }
+    })
+ */
 function ajax(params) {
     params = params || {};
     //请求方式 默认GET

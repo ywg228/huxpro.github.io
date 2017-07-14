@@ -44,8 +44,8 @@ function ajax(params) {
 
     //1.创建XMLHttpRequest对象
     var xhr = null;
-    if(window.XMLHttpRequest) {  //非IE6
-        xhr = new XMLHttpRequest();
+    if(window.XMLHttpRequest) {  //IE6+
+        xhr = new XMLHttpRequest();
     }else { //IE6及其以下版本浏览器
         xhr = new ActiveXObject('Microsoft.XMLHTTP');
     }
@@ -64,20 +64,21 @@ function ajax(params) {
         xhr.send(params.data);
     }
 
-    //3.接受响应数据
-    xhr.onreadystatechange = function () {
+    //3.接受响应数据，只要 readyState 的值变化，就会调用 readystatechange 事件
+    xhr.onreadystatechange = function () {
         //readyState为4表示已接受到全部的响应数据
         if(xhr.readyState == 4) {
-            //响应的HTTP状态码，以2开头的都是成功
-            var status = xhr.status;
-            if (status >= 200 && status < 300 || status == 304) {
+            //响应的HTTP状态码，以2开头的都是成功
+            //304表示从缓存中获取 上面代码已经在每次请求时都加了随机数，所以无需从缓存中取值
+            var status = xhr.status;
+            if (status >= 200 && status < 300) {
                 
                 var response = '';
                 // 判断接受数据的内容类型
                 var type = xhr.getResponseHeader('Content-type');
                 if(type.indexOf('xml') !== -1 && xhr.responseXML) {
                     
-                    response = xhr.responseXML; //Document对象响应
+                    response = xhr.responseXML; //XML 对应的 document 类型
                     
                 } else if(type === 'application/json') {
                     
@@ -101,14 +102,15 @@ function ajax(params) {
 function formatParams(data) {
     var arr = [];
     for (var name in data) {
-        //encodeURIComponent()用于对 URI 中的某一部分进行编码
-        arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
+        //encodeURIComponent()用于对 URI 中的某一部分进行编码，会对它发现的任何非标准字符进行编码
+        arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
     }
     //添加一个随机数参数，防止缓存
     arr.push(('v=' + Math.random()).replace('.', ''));
     return arr.join('&');
 }
 ``` 
+
 #### AJAX不能跨域请求！
 
 ## JSONP 
@@ -240,5 +242,5 @@ function formatParams(data) {
 #### 优点
 兼容性非常好，其原理决定了即便在非常古老的浏览器上也能够很好的被实现。
 #### 缺点
-1. 只能 GET 不能 POST，因为是通过script引用的资源，参数全都显式的放在URL里，和 AJAX 没有半毛钱关系。
+1. 只能 GET 不能 POST，因为是通过script引用的资源，参数全都显式的放在URL里，和AJAX没有关系。
 2. 存在安全隐患，动态插入script标签其实就是一种脚本注入，XSS听过没？

@@ -10,7 +10,7 @@ tags: JavaScript
 ---
 
 ## AJAX 
-Asynchronous JavaScript and XML，异步请求，一种请求数据的方式，不需要刷新整个页面，局部刷新，核心是 XMLHttpRequest 对象 <br>
+Asynchronous JavaScript and XML，异步请求数据，不需要刷新整个页面，局部刷新，核心是 XMLHttpRequest 对象 <br>
 #### 请求步骤
 1. 创建XMLHttpRequest对象
 2. 连接服务器

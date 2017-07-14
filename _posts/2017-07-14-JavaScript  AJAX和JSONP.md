@@ -105,13 +105,8 @@ function formatParams(data) {
         arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
     }
     //添加一个随机数参数，防止缓存
-    arr.push(('v=' + random()).replace('.', ''));
+    arr.push(('v=' + Math.random()).replace('.', ''));
     return arr.join('&');
-}
-
-// 获取随机数
-function random() {
-    return Math.floor(Math.random() * 10000 + 500);
 }
 ``` 
 #### ajax请求是不能跨域的！
@@ -156,8 +151,8 @@ XMLHttpRequest cannot load XXX. No 'Access-Control-Allow-Origin' header is prese
             data: {
                 'wd': 'jsonp'
             },
-            callback: 'cb', //
-            //响应成功
+            callback: 'cb', 
+            //响应成功
             success: function (res) {
                console.log(res.s);
             },
@@ -234,13 +229,8 @@ function formatParams(data) {
         arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
     }
     //添加一个随机数参数，防止缓存
-    arr.push(('v=' + random()).replace('.', ''));
+    arr.push(('v=' + Math.random()).replace('.', ''));
     return arr.join('&');
-}
-
-// 获取随机数
-function random() {
-    return Math.floor(Math.random() * 10000 + 500);
 }
 ```
 

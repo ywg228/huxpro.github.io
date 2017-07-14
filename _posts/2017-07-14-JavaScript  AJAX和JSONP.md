@@ -129,17 +129,17 @@ http://localhost:8080 和 https://example.com 不同，协议、域名、端口�
 XMLHttpRequest cannot load XXX. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
 ``` 
 那如何跨域请求？这就需要JSONP
-#### 定义
+### 定义
 一种跨域请求方式。<br>
 主要原理是利用script标签可以跨域请求的特性，由其src属性发送请求到服务器，服务器返回JS代码，浏览器接受响应，然后就直接执行了，这和通过script标签引用外部文件的原理是一样的。
-#### 组成
-由两部分组成：回调函数和数据，回调函数一般是在浏览器控制，作为参数发往服务器端（当然，你也可以固定回调函数的名字，但客户端和服务器端的名称一定要一致）。当服务器响应时，服务器端就会把该函数和数据拼成字符串返回。 著作权归作者所有。
-#### 请求步骤
+### 组成
+由两部分组成：回调函数和数据，回调函数一般是在浏览器控制，作为参数发往服务器端（当然，你也可以固定回调函数的名字，但客户端和服务器端的名称一定要一致）。当服务器响应时，服务器端就会把该函数和数据拼成字符串返回。 
+### 请求步骤
 1. 请求阶段：浏览器创建一个 script 标签，并给其src 赋值(类似 http://suggestion.baidu.com/su?wd=jsonp&cb=jsonpCallback）。
 2. 发送请求：当给script的src赋值时，浏览器就会发起一个请求。
 3. 数据响应：服务端将要返回的数据作为参数和函数名称拼接在一起(格式类似”jsonpCallback({name: 'abc'})”)返回。当浏览器接收到了响应数据，由于发起请求的是 script，所以相当于直接调用 jsonpCallback 方法，并且传入了一个参数。
 
-#### JSONP的简单封装
+### JSONP的简单封装
 ```
 /**
  * jsonp跨域请求简单封装
@@ -234,4 +234,9 @@ function formatParams(data) {
 }
 ```
 
-
+### 优缺点
+#### 优点
+兼容性非常好，其原理决定了即便在非常古老的浏览器上也能够很好的被实现。
+#### 缺点
+1. 只能 GET 不能 POST，因为是通过<script>引用的资源，参数全都显式的放在URL里，和 AJAX 没有半毛钱关系。
+2. 存在安全隐患，动态插入<script>标签其实就是一种脚本注入，XSS听过没？

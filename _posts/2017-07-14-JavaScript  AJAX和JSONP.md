@@ -115,7 +115,7 @@ function random() {
 
 ## JSONP 
 ### 同源策略
-AJAX之所以需要’跨域‘，就是因为浏览器的同源策略，即一个页面的AJAX只能获取这个页面相同源或者相同域的数据。
+AJAX之所以需要’跨域‘，就是因为浏览器的同源策略，即一个页面的AJAX只能获取这个页面相同源或者相同域的数据。 <br>
 何为“同源”或者“同域”？——协议、域名、端口号都必须相同，如下：
 ``` 
 http://example.com 和 https://example.com 不同，因为协议不同；   
@@ -125,4 +125,8 @@ http://example.com 和 http://example1.com 不同，因为域名不同；  
 http://localhost:8080 和 http://localhost:1000 不同，因为端口不同；   
 
 http://localhost:8080 和 https://example.com 不同，协议、域名、端口号都不同，
+``` 
+如果我们跨域请求，会出现如下错误：
+``` 
+XMLHttpRequest cannot load XXX. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
 ``` 

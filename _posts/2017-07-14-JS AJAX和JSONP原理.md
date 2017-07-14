@@ -111,7 +111,12 @@ function formatParams(data) {
 ``` 
 ![](http://images2015.cnblogs.com/blog/63651/201612/63651-20161218091406308-2001323373.png)
 #### AJAX不能跨域请求！
-
+#### 三个标签允许跨域加载资源
+``` 
+<img src="xxx"> 可用于打点统计，统计网站可能是其他域
+<link href="xxx"> link，script 可用于CDN，CDN也是其他域
+<script src="xxx"></script> 用于JSONP 下面有讲到
+``` 
 ### 优缺点
 #### 优点
 1. 无刷新更新数据，局部刷新，
@@ -139,12 +144,6 @@ http://localhost:8080 和 https://example.com 不同，协议、域名、端口�
 如果我们跨域请求，会出现如下错误：
 ``` 
 XMLHttpRequest cannot load XXX. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
-``` 
-但是有**三个标签允许跨域加载资源**：
-``` 
-<img src="xxx">
-<link href="xxx">
-<script src="xxx"></script>
 ``` 
 那如何跨域请求？这就需要JSONP了。
 ### 核心原理

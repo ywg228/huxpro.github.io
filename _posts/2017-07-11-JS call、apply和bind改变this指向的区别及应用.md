@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      JS call、apply和bind改变this指向
-subtitle:   学习笔记
+subtitle:   JS深入
 date:       2017-07-11
 author:     Ywg
 header-img: img/home-bg.jpg

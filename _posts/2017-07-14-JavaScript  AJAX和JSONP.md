@@ -20,7 +20,8 @@ tags: JavaScript
 #### AJAX的简单封装
 ``` 
 /**
- * 使用方式：
+ * ajax异步请求简单封装
+ * 使用方式
  *  ajax({
         url : '',
         type: 'GET',
@@ -132,6 +133,7 @@ http://localhost:8080 和 https://example.com 不同，协议、域名、端口�
 ``` 
 XMLHttpRequest cannot load XXX. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
 ``` 
+那如何跨域请求？这就需要JSONP
 #### 定义
 一种跨域请求方式。<br>
 主要原理是利用script标签可以跨域请求的特性，由其src属性发送请求到服务器，服务器返回JS代码，浏览器接受响应，然后就直接执行了，这和通过script标签引用外部文件的原理是一样的。

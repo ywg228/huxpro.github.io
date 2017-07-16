@@ -76,13 +76,7 @@ service-worker: true
 
 # Friends
 friends: [
-     {
-        title: "简书",
-        href: "http://www.jianshu.com/users/452a2c86f273/timeline"
-    },{
-        title: "知乎",
-        href: "https://www.zhihu.com/people/ywg228/activities"
-    },{
+    {
         title: "Github",
         href: "https://github.com/ywg228"
     },{

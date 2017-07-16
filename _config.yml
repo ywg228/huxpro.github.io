@@ -43,7 +43,7 @@ kramdown:
 #disqus_username: ywg228
 
 # Netease setttings
-netease_comment: true
+#netease_comment: true
 
 # Analytics settings
 # Baidu Analytics 

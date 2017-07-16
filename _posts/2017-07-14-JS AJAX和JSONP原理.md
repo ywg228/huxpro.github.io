@@ -4,7 +4,7 @@ title:      JS AJAX和JSONP
 subtitle:   JS基础
 date:       2017-07-14
 author:     Ywg
-header-img: img/home-bg.jpg
+header-img: img/home-bg-o.jpg
 catalog:    true
 tags: JavaScript JS基础
 ---

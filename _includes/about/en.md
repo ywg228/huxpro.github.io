@@ -1,6 +1,6 @@
 
 
-> Yet another Developer & Designer.  
+> A Front-end Developer.   
 
 
 

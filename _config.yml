@@ -79,8 +79,11 @@ friends: [
     {
         title: "Github",
         href: "https://github.com/ywg228"
-    },{
+    }, {
         title: "CodePen",
         href: "https://codepen.io/ywg228"
+    }, {
+        title: "凹凸实验室",
+        href: "https://aotu.io"
     }
 ]

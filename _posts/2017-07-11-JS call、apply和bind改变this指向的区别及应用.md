@@ -112,10 +112,10 @@ if (!Function.prototype.bind) {
 }
 ```
 ### call、apply和bind的区别
-相同点：都是用来改变this指向 <br>
+相同点：都是用来改变函数体内的this指向 <br>
 不同点： <br>
-1)call、bind方法接受的是若干个参数的列表，而apply()方法接受的是一个包含多个参数的数组。 <br>
-2)call、apply都是立即执行函数，bind()则是返回一个函数，便于稍后调用。
+1)call、bind方法接受的是若干个参数的列表，而apply方法接受的是一个包含多个参数的数组。 <br>
+2)call、apply都是立即执行函数，而bind不立即执行，则是返回一个函数，便于稍后调用。
 
 ### 通俗理解
 call()、apply()、bind()都是Function对象的一个方法，他的第一个参数是this，第二个是函数的参数。<br>

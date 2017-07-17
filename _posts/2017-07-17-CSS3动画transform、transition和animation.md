@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      CSS3动画详解
+title:      CSS3动画transform、transition和animation
 subtitle:   CSS3学习
 date:       2017-07-17
 author:     Ywg

@@ -53,12 +53,12 @@ function ajax(params) {
     }
 
     //2.连接服务器并发送请求
-    if (params.type == 'GET') {
+    if (params.type === 'GET') {
         //连接服务器 三个参数：请求方式、请求地址(get方式时，传输数据是加在地址后的)、是否异步请求(同步请求的情况极少)
         xhr.open('GET', params.url + '?' + params.data, params.async);
         //发送请求
         xhr.send(null);
-    } else if (params.type == 'POST') {
+    } else if (params.type === 'POST') {
         xhr.open('POST', params.url, params.async);
         //设置表单提交时的内容类型
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');

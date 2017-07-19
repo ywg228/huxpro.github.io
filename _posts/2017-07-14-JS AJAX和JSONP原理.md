@@ -176,6 +176,12 @@ XMLHttpRequest cannot load XXX. No 'Access-Control-Allow-Origin' header is prese
                 console.log(msg.message);
             }
         });
+   后台
+   <?php 
+        $go=$_GET['callback'];  // 获取callback的值
+        echo $go.'({a:"1"})';  // 输出回调函数
+   ?>
+
  */
 function jsonp(params) {
     params = params || {};

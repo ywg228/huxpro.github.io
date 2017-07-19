@@ -141,7 +141,7 @@ http://localhost:8080 和 http://localhost:1000 不同，因为端口不同；
 
 http://localhost:8080 和 https://example.com 不同，协议、域名、端口号都不同，
 ``` 
-如果我们跨域请求，会出现如下错误：
+如果我们AJAX跨域请求，会出现如下错误：
 ``` 
 XMLHttpRequest cannot load XXX. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
 ``` 

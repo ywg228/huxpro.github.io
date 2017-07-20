@@ -52,7 +52,7 @@ JS代码格式化插件。
 
 #### AutoFileName 
 - 可以自动补全文件路径及名称的插件 
-- 调用方法：<img src="../" />
+- 调用方法：`<img src="../" />`
 #### CssComb
 - 对CSS属性进行排序和格式化，依赖于Node.js 
 - 使用方法：菜单Tools->Run CSScomb或在CSS文件中按快捷键Ctrl+Shift+C

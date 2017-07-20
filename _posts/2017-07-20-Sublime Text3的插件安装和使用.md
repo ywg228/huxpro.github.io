@@ -30,8 +30,7 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
 - 然后输入或选择你需要的插件再按回车就可以安装插件了
 
 ## 常用插件
-
-#### Emmet插件 
+#### Emmet
 - Emmet插件可以说是使用Sublime Text进行前端开发必不可少的插件，它让编写HTML代码变得极其简单高效。
 - 基本用法：输入标签简写形式，然后按Tab键。 
 - 更多用法：[速查表](https://docs.emmet.io/cheat-sheet/)

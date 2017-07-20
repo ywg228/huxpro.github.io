@@ -57,7 +57,7 @@ kramdown:
 
 # Sidebar settings
 sidebar: true                           # 是否开启侧边栏
-sidebar-about-description: "写写代码，做做设计，<br>离开世界之前，一切都是过程"
+sidebar-about-description: "天赋不够，勤奋来凑"
 sidebar-avatar: img/avatar.jpg      # 个人头像
 
 

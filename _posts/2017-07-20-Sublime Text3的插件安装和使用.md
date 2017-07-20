@@ -80,10 +80,23 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
 解决中文输入框不跟随的问题
 
 #### Alignment
-自动对齐代码，包括PHP、CSS、JavaScript语言。使得代码看起来更整齐美观，更具可读性
+- 自动对齐代码，包括PHP、CSS、JavaScript语言。使得代码看起来更整齐美观，更具可读性
+- 使用：先选择要对齐的文本 > 按快捷键Ctrl+Alt+A
 
 #### jQuery
 - 自动补全 jQuery 函数的插件，带有语法高亮，并且包含几乎所有的 jQuery 方法。
+
+#### Git
+- 插件基本上实现了git的所有功能
+- 使用：https://github.com/kemayo/sublime-text-git/wiki
+
+#### Nodejs
+- node代码提示
+- 教程：https://sublime.wbond.net/packages/Nodejs
+
+####  HTML5
+- 支持hmtl5规范的插件包
+- 使用方法：新建html文档 -> 输入HTML5 -> 敲击Tab -> 自动补全html5规范文档
 
 #### ColorPicker
 - 调色板
@@ -91,6 +104,9 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
 
 #### convertToUTF8
 
+#### LESS
+- LESS代码高亮插件
+- 打开.less文件或者设置为less格式
 ## 常用快捷键
 - HTML标签后Tab：自动补全
 - Ctrl + `：打开控制台

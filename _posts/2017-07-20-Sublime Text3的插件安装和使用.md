@@ -89,6 +89,8 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
 - 调色板
 - 使用方法：ctr + shift + c
 
+#### convertToUTF8
+
 ## 常用快捷键
 - HTML标签后Tab：自动补全
 - Ctrl + `：打开控制台

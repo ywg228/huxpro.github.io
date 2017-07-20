@@ -76,7 +76,9 @@ JS代码格式化插件。
 #### IMESupport
 解决中文输入框不跟随的问题
 
-#### 
+#### Alignment
+自动对齐代码，包括PHP、CSS、JavaScript语言。使得代码看起来更整齐美观，更具可读性
+
 #### jQuery
 - 自动补全 jQuery 函数的插件，带有语法高亮，并且包含几乎所有的 jQuery 方法。
 ## 常用快捷键

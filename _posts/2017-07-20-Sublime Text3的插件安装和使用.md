@@ -36,12 +36,14 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
 - 更多用法：[速查表](https://docs.emmet.io/cheat-sheet/)
 
 #### JSFormat
-JS代码格式化插件。
+- JS代码格式化插件。
+- 使用方法：ctrl + alt + f
 
 #### SublimeCodeIntel
 代码提示插件
 
 #### SublimeLinter
+代码校验工具
 
 #### HTML-CSS-JS Prettify
 - 格式化代码
@@ -53,6 +55,7 @@ JS代码格式化插件。
 #### AutoFileName 
 - 可以自动补全文件路径及名称的插件 
 - 调用方法：`<img src="../" />`
+
 #### CssComb
 - 对CSS属性进行排序和格式化，依赖于Node.js 
 - 使用方法：菜单Tools->Run CSScomb或在CSS文件中按快捷键Ctrl+Shift+C

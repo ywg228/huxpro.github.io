@@ -104,7 +104,7 @@ function formatParams(data) {
         //encodeURIComponent()用于对 URI 中的某一部分进行编码
         arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
     }
-    //添加一个随机数参数，防止缓存
+    //添加一个随机数参数，防止浏览器缓存
     arr.push(('v=' + Math.random()).replace('.', ''));
     return arr.join('&');
 }

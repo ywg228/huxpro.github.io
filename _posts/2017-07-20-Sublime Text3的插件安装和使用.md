@@ -84,6 +84,11 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
 
 #### jQuery
 - 自动补全 jQuery 函数的插件，带有语法高亮，并且包含几乎所有的 jQuery 方法。
+
+#### ColorPicker
+- 调色板
+- 使用方法：ctr + shift + c
+
 ## 常用快捷键
 - HTML标签后Tab：自动补全
 - Ctrl + `：打开控制台

@@ -23,7 +23,7 @@ Cookie 是小甜饼的意思。顾名思义，cookie 确实非常小，它的大
 #### 删除所保存的数据
 - localStorage.clear();
 
-#### sessionStorage
+## sessionStorage
 - sessionStorage 与 localStorage 的接口类似，但保存数据的有效期与 localStorage 不同。sessionStorage 是一个前端的概念，它只是可以将一部分数据在当前会话中保存下来，刷新页面数据依旧存在。但当页面关闭后，sessionStorage 中的数据就会被清空。
 
 ## 相同点

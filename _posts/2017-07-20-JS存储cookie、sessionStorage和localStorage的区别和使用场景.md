@@ -12,10 +12,19 @@ tags: JavaScript JS基础
 Cookie 是小甜饼的意思。顾名思义，cookie 确实非常小，它的大小限制为4KB左右，它的主要用途有保存登录信息，比如你登录某个网站市场可以看到“记住密码”，这通常就是通过在 Cookie 中存入一段辨别用户身份的数据来实现的。
 
 ## localStorage
-localStorage 是 HTML5 标准中新加入的技术。
+- localStorage 是 HTML5 标准中新加入的技术。
 
-## sessionStorage
-sessionStorage 与 localStorage 的接口类似，但保存数据的有效期与 localStorage 不同。sessionStorage 是一个前端的概念，它只是可以将一部分数据在当前会话中保存下来，刷新页面数据依旧存在。但当页面关闭后，sessionStorage 中的数据就会被清空。
+#### 添加数据
+- localStorage.setItem("key", "value");
+#### 读取数据
+- localStorage.getItem("key");
+#### 删除某个键名的数据
+- localStorage.removeItem("key");
+#### 删除所保存的数据
+- localStorage.clear();
+
+#### sessionStorage
+- sessionStorage 与 localStorage 的接口类似，但保存数据的有效期与 localStorage 不同。sessionStorage 是一个前端的概念，它只是可以将一部分数据在当前会话中保存下来，刷新页面数据依旧存在。但当页面关闭后，sessionStorage 中的数据就会被清空。
 
 ## 相同点
 - 都会在浏览器端存储数据，有大小限制，同源限制

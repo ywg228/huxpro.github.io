@@ -110,7 +110,8 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
 - 打开.less文件或者设置为less格式
 
 #### ChineseLocalization
-汉化插件
+- 汉化插件
+- Help -> Language 中进行切换
 
 #### SyncedSidebarBg
 自动同步侧边栏底色为编辑窗口底色

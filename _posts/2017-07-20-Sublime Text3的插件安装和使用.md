@@ -112,6 +112,9 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
 #### ChineseLocalization
 汉化插件
 
+#### SyncedSidebarBg
+自动同步侧边栏底色为编辑窗口底色
+
 ## 常用快捷键
 #### 选择类
 

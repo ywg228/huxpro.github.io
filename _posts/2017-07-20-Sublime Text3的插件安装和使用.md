@@ -29,6 +29,10 @@ import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc5
 - 在Sublime Text 3中按下快捷键Ctrl+Shift+P，在出现的文本框中输入Install Package(或直接输入“ip”)选中Install Package并回车
 - 然后输入或选择你需要的插件再按回车就可以安装插件了
 
+## 插件删除
+- 在Sublime Text 3中按下快捷键Ctrl+Shift+P，在出现的文本框中输入Remove Package(或直接输入“rp”)选中Remove Package并回车
+- 然后输入或选择你想要删除的插件再按回车就可以删除插件了
+
 ## 常用插件
 #### Emmet
 - Emmet插件可以说是使用Sublime Text进行前端开发必不可少的插件，它让编写HTML代码变得极其简单高效。

@@ -158,6 +158,40 @@ function formatParams(data) {
 2. 对搜索引擎的支持不足
 ### 适用场景
 
+## Ajax缓存问题
+#### 原理
+- Ajax在发送的数据成功后，会把请求的URL和返回的响应结果保存在缓存内，当下一次调用Ajax发送相同的请求时，它会直接从缓存中把数据取出来，这是为了提高页面的响应速度和用户体验。当前这要求两次请求URL完全相同，包括参数。这个时候，浏览器就不会与服务器交互。
+
+#### 好处
+- 这种设计使客户端对一些静态页面内容的请求，比如图片，css文件，js脚本等，变得更加快捷，提高了页面的响应速度，也节省了网络通信资源。
+
+#### 不足
+- 如果通过Ajax对一些后台数据进行更改的时候，虽然数据在后台已经发生改变，但是页面缓存中并没有改变，对于相同的URL，Ajax提交过去以后，浏览器还只是简单的从缓存中拿数据，这种就不行了。
+
+#### 解决方案
+1. 在服务端加 header("Cache-Control: no-cache, must-revalidate");(如php中)
+
+2. 在ajax发送请求前加上 xhr.setRequestHeader("If-Modified-Since","0");或 xhr.setRequestHeader("Cache-Control","no-cache");
+
+3. 在 Ajax 的 URL 参数后加上 "?r=" + Math.random(); 或 "?t=" + new Date().getTime();
+
+4. 用POST替代GET：不推荐 post请求发送ajax不会缓存
+
+5. 在jQuery中设置cache:false即可
+``` 
+$.ajax({
+    url: "",
+    cache: false,
+    dataType : "json",
+    data:{
+         //some parameters
+    },
+    success: function(data) {
+        //do something
+    }
+});
+``` 
+
 ## JSONP 
 一种跨域请求数据的方式。
 ### 同源策略

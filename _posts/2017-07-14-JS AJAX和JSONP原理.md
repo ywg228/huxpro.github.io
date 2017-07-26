@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      JS AJAX和JSONP
+title:      JS AJAX和JSONP原理
 subtitle:   JS基础
 date:       2017-07-14
 author:     Ywg

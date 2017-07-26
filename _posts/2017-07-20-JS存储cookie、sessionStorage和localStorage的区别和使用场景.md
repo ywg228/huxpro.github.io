@@ -8,18 +8,22 @@ header-img: img/home-bg-o.jpg
 catalog:    true
 tags: JavaScript JS基础
 ---
+
 ## cookie
-Cookie 是小甜饼的意思。顾名思义，cookie 确实非常小，它的大小限制为4KB左右，它的主要用途有保存登录信息，比如你登录某个网站市场可以看到“记住密码”，这通常就是通过在 Cookie 中存入一段辨别用户身份的数据来实现的。
+- Cookie 是小甜饼的意思。顾名思义，cookie 确实非常小，它的大小限制为4KB左右，它的主要用途有保存登录信息，比如你登录某个网站市场可以看到“记住密码”，这通常就是通过在 Cookie 中存入一段辨别用户身份的数据来实现的。
 
 ## localStorage
 - localStorage 是 HTML5 标准中新加入的技术。
 
 #### 添加数据
 - localStorage.setItem("key", "value");
+
 #### 读取数据
 - localStorage.getItem("key");
+
 #### 删除某个键名的数据
 - localStorage.removeItem("key");
+
 #### 删除所保存的数据
 - localStorage.clear();
 
@@ -38,6 +42,7 @@ Cookie 是小甜饼的意思。顾名思义，cookie 确实非常小，它的大
 作用域 | 在同源且符合path规则的文档之间共享 | 在同源文档之间共享 | 不在不同的浏览器窗口中共享，即使是同一个页面
 与服务器端通信 | 每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题 | 仅在客户端（即浏览器）中保存，不参与和服务器的通信 | 仅在客户端（即浏览器）中保存，不参与和服务器的通信
 安全性 | cookie中最好不要放置任何明文的东西 | 两个storage的数据提交后在服务端一定要校验 
+
 ## 应用场景
 - 判断用户是否登录：Cookie，因为每个 HTTP 请求都会带着 Cookie 的信息。针对登录过的用户，服务器端会在他登录时往 Cookie 中插入一段加密过的唯一辨识单一用户的辨识码，下次只要读取这个值就可以判断当前用户是否登录啦。
 - 电商网站的购物车：localStorage

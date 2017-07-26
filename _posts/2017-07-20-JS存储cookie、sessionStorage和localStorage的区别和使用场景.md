@@ -46,5 +46,84 @@ Cookie 是小甜饼的意思。顾名思义，cookie 确实非常小，它的大
 
 ## 注意
 不是什么数据都适合放在 Cookie、localStorage 和 sessionStorage 中的。使用它们的时候，需要时刻注意是否有代码存在 XSS 注入的风险。因为只要打开控制台，你就随意修改它们的值，也就是说如果你的网站中有 XSS 的风险，它们就能对你的 localStorage 肆意妄为。所以千万不要用它们存储你系统中的敏感数据。
+
+## Cookie简单封装
 ```
+/**
+ * 添加cookie
+ * @param name
+ * @param value
+ * @param options
+ *  expires 有效期天数
+ *  path 路径
+ *  domain 域名
+ *  secure 安全措施
+ */
+function setCookie(name, value, options) {
+    // 如果第二个参数存在
+    if (typeof value != 'undefined') {
+        options = options || {};
+        if (value === null) {
+            value = '';
+            // 设置失效时间
+            options.expires = -1;
+        }
+        var expires = '';
+        // 如果存在事件参数项，并且类型为 number，或者具体的时间，那么分别设置事件
+        if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+            var date;
+            if (typeof options.expires == 'number') {
+                date = new Date();
+                date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+            } else {
+                date = options.expires;
+            }
+            expires = '; expires=' + date.toUTCString();
+        }
+        var path = options.path ? '; path=' + (options.path) : ''; // 设置路径
+        var domain = options.domain ? '; domain=' + (options.domain) : ''; // 设置域
+        var secure = options.secure ? '; secure' : ''; // 设置安全措施，为 true 则直接设置，否则为空
+        // 把所有字符串信息都存入数组，然后调用 join() 方法转换为字符串，并写入 Cookie 信息
+        document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+    }
+}
+
+/**
+ * 获取cookie
+ * @param name
+ * @returns {*}
+ */
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = (cookies[i] || '').replace(/^\s+|\s+$/g, '');
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+/**
+ * 删除cookie
+ * @param name
+ */
+function deleteCookie(name) {
+    var date = new Date();
+    date.setTime(date.getTime() - 5000); //将date设置为过去的时间
+    var val = getCookie(name);
+    if (val != null) {
+        document.cookie = name + '=' + val + ';expires=' + date.toUTCString();
+    }
+}
+
+var Cookie = {
+    getCookie: getCookie,
+    setCookie: setCookie,
+    deleteCookie: deleteCookie
+};
 ```

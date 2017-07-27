@@ -20,16 +20,16 @@ Asynchronous JavaScript and XML，异步请求数据，不需要刷新整个页�
 #### XMLHttpRequest属性和方法
 
 XMLHttpRequest发送请求
-- open(method, url, async [, user, password]):初始化准备发送到服务器上的请求。method是HTTP方法，不区分大小写；url是请求发送的相对或绝对URL；asynchronous表示请求是否异步；user和password提供身份验证
+- open(method, url, async [, user, password])：初始化准备发送到服务器上的请求。method是HTTP方法，不区分大小写；url是请求发送的相对或绝对URL；asynchronous表示请求是否异步；user和password提供身份验证
 
-- setRequestHeader(name, value):设置HTTP报头
+- setRequestHeader(name, value)：设置HTTP报头
 
-- send(body):对服务器请求进行初始化。参数body包含请求的主体部分，对于POST请求为键值对字符串；对于GET请求，为null
+- send(body)：对服务器请求进行初始化。参数body包含请求的主体部分，对于POST请求为键值对字符串；对于GET请求，为null
 
 XMLHttpRequest响应请求
 - onreadystatechange：readyState状态改变时调用的函数
 
-- readyState:请求状态，取值：
+- readyState：请求状态，取值：
 ``` 
 0 ：请求未初始化，open方法还没有调用
 1 ：服务器连接已建立，open()成功调用，在这个状态下，可以为xhr设置请求头，或者使用send()发送请求
@@ -39,13 +39,13 @@ XMLHttpRequest响应请求
  ``` 
 - status：服务器返回的HTTP状态码（如，200， 404）
 
-- statusText:服务器返回的HTTP状态信息（如，OK，No Content）
+- statusText：服务器返回的HTTP状态信息（如，OK，No Content）
 
-- responseText:获取字符串形式的响应数据
+- responseText：获取字符串形式的响应数据
 
 - responseXML: 获取XML形式的响应数据
 
-- abort():取消异步HTTP请求
+- abort()：取消异步HTTP请求
 
 - getAllResponseHeaders(): 获取所有的响应报头。每个报头都是一个用冒号分隔开的名/值对，并且使用一个回车/换行来分隔报头行
 

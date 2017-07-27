@@ -18,6 +18,15 @@ Asynchronous JavaScript and XML，异步请求数据，不需要刷新整个页�
 4. 接收响应数据
 
 #### XMLHttpRequest属性和方法
+
+XMLHttpRequest发送请求
+- open(method, url, async [, user, password]):初始化准备发送到服务器上的请求。method是HTTP方法，不区分大小写；url是请求发送的相对或绝对URL；asynchronous表示请求是否异步；user和password提供身份验证
+
+- setRequestHeader(name, value):设置HTTP报头
+
+- send(body):对服务器请求进行初始化。参数body包含请求的主体部分，对于POST请求为键值对字符串；对于GET请求，为null
+
+XMLHttpRequest响应请求
 - onreadystatechange：readyState状态改变时调用的函数
 
 - readyState:请求状态，取值：
@@ -28,15 +37,6 @@ Asynchronous JavaScript and XML，异步请求数据，不需要刷新整个页�
 3 ：请求接收中，接收到了响应主体
 4 ：请求已完成，响应已就绪
  ``` 
- 
-XMLHttpRequest发送请求
-- open(method, url, async [, user, password]):初始化准备发送到服务器上的请求。method是HTTP方法，不区分大小写；url是请求发送的相对或绝对URL；asynchronous表示请求是否异步；user和password提供身份验证
-
-- setRequestHeader(name, value):设置HTTP报头
-
-- send(body):对服务器请求进行初始化。参数body包含请求的主体部分，对于POST请求为键值对字符串；对于GET请求，为null
-
- XMLHttpRequest响应请求
 - status：服务器返回的HTTP状态码（如，200， 404）
 
 - statusText:服务器返回的HTTP状态信息（如，OK，No Content）

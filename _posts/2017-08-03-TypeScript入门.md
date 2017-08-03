@@ -58,6 +58,69 @@ num = 20;
 #### let vs const
 变量如果你不打算去修改，那就使用const，反之则使用let;
 
+## 函数
+前两个number是参数类型，第三个number是返回类型，可省略
+``` 
+function add(x: number, y: number): number {
+    return x + y;
+}
+add(1, 2);
+``` 
+
+#### 可选参数
+在参数名后加?可实现可选参数功能。
+``` 
+function printStr(a: string, b?:string) {
+  if(b) {
+    return a + ' ' + b;
+  }else {
+    return a;
+  }
+}
+printStr('hello'); //hello
+printStr('hello', 'tom'); //hello tom
+``` 
+可选参数必须放在必选参数后面！！
+
+#### 默认参数
+- 带默认值的参数是可选的
+- 带默认值的参数不需要放在必须参数的后面
+- 如果带默认值的参数在必选参数的前面，必须传递undefined值来获得默认值
+- 带默认值的参数的数据类型可省略，即默认值的数据类型
+- 当默认参数不传值或者传的值是undefined时则使用默认值
+``` 
+function printStr(a: string, b='tom') {
+  if(b) {
+    return a + ' ' + b;
+  }else {
+    return a;
+  }
+}
+function printStr2(a='hello', b=string) {
+  if(b) {
+    return a + ' ' + b;
+  }else {
+    return a;
+  }
+}
+printStr('hello'); //hello tom
+printStr('hello', 'ywg'); //hello ywg
+printStr('hello', undefined); //hello tom
+printStr2(undefined, 'tom'); //hello tom
+``` 
+
+#### 剩余参数
+- 在参数前加...就是剩余参数
+- 剩余参数是个数组，代表之后的所有参数，类似arguments
+- 剩余参数会被当做个数不限的可选参数。 可以一个也没有，也可以是多个
+- 剩余参数一定要在其它参数的后面
+``` 
+function printStr(firstArg: string, ...restOfArgs: string[]) {
+  return firstArg + ' '+ restOfArgs.join(' ');
+}
+printStr('hello', 'tom', 'my', 'name', 'is', 'ywg');
+``` 
+
 ## 解构表达式
 #### 解构数组
 ``` 
@@ -248,66 +311,77 @@ var p = new Person("tom"); // Error: The 'Person' constructor is protected
 var t = new Teacher('tom', 25);
 ``` 
 
-## 函数
-前两个number是参数类型，第三个number是返回类型，可省略
+## 泛型
+- 参数化的类型，用来限制集合的内容
+
 ``` 
-function add(x: number, y: number): number {
-    return x + y;
+class Person {
+     protected name: string;
+     protected constructor(name: string) { this.name = name; }
 }
-add(1, 2);
+
+class Teacher extends Person {
+    private age: number;
+    constructor(name: string, age: number) {
+        super(name);
+        this.age = age;
+    }
+    public sayHello() {
+        return `Hello, my name is ${this.name} and I'm ${this.age} years old`;
+    }
+}
+
+var teachers: Array<Person> = [];
+teachers[0] = new Teacher('tom', 25);
+teachers[1] = 123; //Error: type '123' is not assignable to type 'Person
 ``` 
 
-#### 可选参数
-在参数名后加?可实现可选参数功能。
+## 接口
+- 用来建立某种代码约定，使得其他开发者在调用某个方法或创建新的类时必须遵守接口定义的代码约定。
+#### 接口声明属性
 ``` 
-function printStr(a: string, b?:string) {
-  if(b) {
-    return a + ' ' + b;
-  }else {
-    return a;
-  }
+interface IPerson {
+    name: string;
+    age: number;
 }
-printStr('hello'); //hello
-printStr('hello', 'tom'); //hello tom
-``` 
-可选参数必须放在必选参数后面！！
+class Person {
+    constructor(public config: IPerson) {
 
-#### 默认参数
-- 带默认值的参数是可选的
-- 带默认值的参数不需要放在必须参数的后面
-- 如果带默认值的参数在必选参数的前面，必须传递undefined值来获得默认值
-- 带默认值的参数的数据类型可省略，即默认值的数据类型
-- 当默认参数不传值或者传的值是undefined时则使用默认值
-``` 
-function printStr(a: string, b='tom') {
-  if(b) {
-    return a + ' ' + b;
-  }else {
-    return a;
-  }
+    }
 }
-function printStr2(a='hello', b=string) {
-  if(b) {
-    return a + ' ' + b;
-  }else {
-    return a;
-  }
-}
-printStr('hello'); //hello tom
-printStr('hello', 'ywg'); //hello ywg
-printStr('hello', undefined); //hello tom
-printStr2(undefined, 'tom'); //hello tom
+var p1 = new Person({
+    name: 'Tom',
+    age: 25
+})
 ``` 
 
-#### 剩余参数
-- 在参数前加...就是剩余参数
-- 剩余参数是个数组，代表之后的所有参数，类似arguments
-- 剩余参数会被当做个数不限的可选参数。 可以一个也没有，也可以是多个
-- 剩余参数一定要在其它参数的后面
+#### 接口声明方法
 ``` 
-function printStr(firstArg: string, ...restOfArgs: string[]) {
-  return firstArg + ' '+ restOfArgs.join(' ');
+interface Animal {
+    eat() 
 }
-printStr('hello', 'tom', 'my', 'name', 'is', 'ywg');
+class Sheep implements Animal{
+    eat() {
+        console.log('eat grass');
+    }
+}
+class Tiger implements Animal{
+    eat() {
+        console.log('eat meat');
+    }
+}
+``` 
+
+## 模块
+- 模块在其自身的作用域里执行，而不是在全局作用域里；这意味着定义在一个模块里的变量，函数，类等等在模块外部是不可见的，除非你明确地使用export形式之一导出它们。 相反，如果想使用其它模块导出的变量，函数，类，接口等的时候，你必须要导入它们，可以使用import形式之一。
+- 模块是自声明的；两个模块之间的关系是通过在文件级别上使用imports和exports建立的。
+- 模块使用模块加载器去导入其它的模块。 在运行时，模块加载器的作用是在执行此模块代码前去查找并执行这个模块的所有依赖。 
+
+## 注解
+
+## 类型定义文件（*.d.ts）
+用来帮助开发者TypeSript中，使用已有的JavaScript工具包，如jQuery
+``` 
+npm install @types/jquery
 ``` 
 

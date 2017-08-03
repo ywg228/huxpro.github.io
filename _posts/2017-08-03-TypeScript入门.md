@@ -180,7 +180,7 @@ s.run(30); //This is Jerry Jerry Run 30
 ``` 
 
 #### 默认public修饰符
-自由地访问类中定义的成员。
+- 类的内外部都可以被访问到
 ``` 
 class Person {
     public name: 'tom'; //参数
@@ -193,7 +193,7 @@ class Person {
 } 
 ``` 
 #### private修饰符
-private声明的成员，在它类的外部不能被访问.
+- private声明的成员，只能在类的内部被访问到
 ``` 
 class Person {
     private name: 'tom'; //参数
@@ -205,7 +205,7 @@ var p = new Person('Tom');
 console.log(p.name); // Error: 'name' is private;
 ``` 
 #### protected修饰符
-与private修饰符的行为类似，有一点不同：protected成员在子类中仍然可以访问。
+- protected修饰符声明的成员，能在类的内部和子类中被访问到
 ``` 
 class Person {
     protected name: string;
@@ -227,7 +227,7 @@ console.log(t.sayHello()); //Hello, my name is tom and I'm 25 years old
 console.log(t.name); //Error: Property 'name' is protected
 ``` 
 
-protected修饰的构造函数不能在类外被实例化，但能被子类继承。
+- protected修饰的构造函数不能在类外被实例化，但能被子类继承。
 ``` 
 class Person {
     protected name: string;

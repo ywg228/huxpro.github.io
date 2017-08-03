@@ -88,14 +88,45 @@ console.log(a, reset.b, reset.c); //123 true 456
 ```
 
 ## 箭头表达式
+用来声明匿名函数，消除传统匿名函数的this指针问题
 ``` 
 var add = (num1, num2) => {
     return num1 + num2;
 }
 console.log(add(1, 2));
 ``` 
+``` 
+function timer(name: string) {
+    this.name = name;
+    setInterval(() => {
+        console.log(this.name);
+    }, 1000);
+}
+timer('tom');
+``` 
 
 ## 循环
+#### for..of
+迭代对象的键对应的值
+``` 
+let arr = [12, 34, 56, 78];
+for (let item of arr) {
+    console.log(item);
+}
+``` 
+#### for..of vs for..in 
+for..of和for..in均和循环一个集合；但是循环的值却不同，for..in循环的是对象的 键 的列表，而for..of则循环对象的键对应的值。
+``` 
+let list = [4, 5, 6];
+
+for (let i in list) {
+    console.log(i); // "0", "1", "2",
+}
+
+for (let i of list) {
+    console.log(i); // "4", "5", "6"
+}
+``` 
 
 ## 类
 ``` 

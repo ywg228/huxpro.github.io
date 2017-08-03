@@ -37,7 +37,65 @@ myName = 'tom';
 ``` 
 var myName: string = 'ywg';
 var say: string = `My name is ${myName}`;
+```
+
+## 变量声明
+#### let 声明
+let 声明的变量当前作用域为块作用域，变量在包含它们的块之外是不能被访问的。
+```
+if (true) {
+    let num = 10;
+}
+console.log(num); //Error: 'num' doesn't exist here
+```
+
+#### const 声明
+与let声明相似，被赋值后不能再改变，不能对它们重新赋值。
+```
+const num = 10;
+num = 20;
+```
+#### let vs const
+变量如果你不打算去修改，那就使用const，反之则使用let;
+
+## 解构表达式
+#### 解构数组
 ``` 
+let arr = ['hello', 'world'];;
+let [first, second] = arr;
+console.log(first, second);
+```
+使用剩余变量
+```
+let [first, ...rest] = [1, 2, 3, 4];
+console.log(first, rest); //1 Array(3)
+```
+
+#### 对象解构
+```
+let o = {
+    a: '123',
+    b: true,
+    c: '456'
+};
+let {a, b} = o;
+console.log(a, b); //123 true
+```
+使用剩余变量
+```
+let {a, ...reset} = o;
+console.log(a, reset.b, reset.c); //123 true 456
+```
+
+## 箭头表达式
+``` 
+var add = (num1, num2) => {
+    return num1 + num2;
+}
+console.log(add(1, 2));
+``` 
+
+## 循环
 
 ## 类
 ``` 

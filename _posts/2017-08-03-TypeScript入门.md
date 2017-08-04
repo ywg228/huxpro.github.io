@@ -11,7 +11,7 @@ tags: JavaScript
 
 ## 前言
 - 微软开发的编程语言。
-- 是JavaScript的一个超集
+- 是JavaScript的一个超集，ES6是Javascript语言的标准，Typescript是ES6的超集
 - 遵循ES6
 - 强类型语言。有利于编写大型程序
 

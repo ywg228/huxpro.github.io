@@ -94,3 +94,29 @@ CSS:
 
 <iframe height='294' scrolling='no' title='CSS Sticky Footer-3' src='//codepen.io/ywg228/embed/qXjadJ/?height=294&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/ywg228/pen/qXjadJ/'>CSS Sticky Footer-3</a> by Mr.Yang (<a href='https://codepen.io/ywg228'>@ywg228</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+## 使用 flexbox
+HTML:
+```
+<div class="content">
+  <h1>使用 flexbox</h1>
+  .....
+</div>
+
+<div class="footer">Sticky Footer</div>
+```
+CSS:
+```
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+}
+```
+这种方式堪称完美，就是兼容性有点问题。

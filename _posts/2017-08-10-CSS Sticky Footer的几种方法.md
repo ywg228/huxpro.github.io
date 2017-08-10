@@ -12,4 +12,36 @@ tags: CSS
 ## 前言
 Sticky Footer的目的：当文档内容少的时候，让它“固定”在浏览器窗口的底部。如果有足够的内容就将页面撑开，footer被撑到文档的底部。
 ![Sticky Footer](http://s0.qhimg.com/static/2420cb2a1c837ca9.svg)
-## 
+## 在 content 上加上负的 margin-bottom
+HTML:
+```
+<div class="content">
+  <h1>在 content 上加上负的 margin-bottom</h1>
+  .....
+  <div class="push"></div>
+</div>
+<div class="footer">Sticky Footer</div>
+```
+CSS:
+```
+.content {
+  width: 1200px;
+  background-color: #C2FFA9;
+  margin: auto;
+  
+  min-height: 100%;
+  /* 负的footer高度 */
+  margin-bottom: -50px;
+}
+.footer,
+.push {
+  /* 相同的高度 */
+  height: 50px;
+}
+```
+需要在内容区域加一个额外的元素（.push 元素），这样确保不会因为负 margin 将 footer 提升上来而覆盖了任何实际内容
+
+<iframe height='300' scrolling='no' title='CSS Sticky Footer-1' src='//codepen.io/ywg228/embed/LjLNwy/?height=300&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/ywg228/pen/LjLNwy/'>CSS Sticky Footer-1</a> by Mr.Yang (<a href='https://codepen.io/ywg228'>@ywg228</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## 在 footer 上加上负的 margin-top

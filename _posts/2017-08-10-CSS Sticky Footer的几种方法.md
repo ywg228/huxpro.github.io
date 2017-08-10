@@ -120,3 +120,6 @@ body {
 }
 ```
 这种方式堪称完美，就是兼容性有点问题。
+
+<iframe height='297' scrolling='no' title='CSS Sticky Footer-4' src='//codepen.io/ywg228/embed/LjLRev/?height=297&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/ywg228/pen/LjLRev/'>CSS Sticky Footer-4</a> by Mr.Yang (<a href='https://codepen.io/ywg228'>@ywg228</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>

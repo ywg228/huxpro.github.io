@@ -166,3 +166,19 @@ el.addEventListener("transitionend", function() {
 
 <iframe height='300' scrolling='no' title='WEbPMm' src='//codepen.io/ywg228/embed/WEbPMm/?height=265&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/ywg228/pen/WEbPMm/'>WEbPMm</a> by Mr.Yang (<a href='https://codepen.io/ywg228'>@ywg228</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+##  JS捕获CSS3的动画事件
+每当动画事件发生时，都会调用AnimationListener函数
+```
+function PrefixedEvent(element, type, callback) {
+    var pfx = ["webkit", "moz", "MS", "o", ""];
+    for (var p = 0; p < pfx.length; p++) {
+        if (!pfx[p]) type = type.toLowerCase();
+        element.addEventListener(pfx[p] + type, callback, false);
+    }
+}
+var animEle = document.getElementById("anim");
+PrefixedEvent(animEle, "AnimationStart", AnimationListener);  //动画开触发
+PrefixedEvent(animEle, "AnimationIteration", AnimationListener); //每一次新的动画执行过程中被触发
+PrefixedEvent(animEle, "AnimationEnd", AnimationListener); //动画结束触发
+```

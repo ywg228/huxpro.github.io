@@ -178,7 +178,7 @@ function PrefixedEvent(element, type, callback) {
     }
 }
 var animEle = document.getElementById("anim");
-PrefixedEvent(animEle, "AnimationStart", AnimationListener);  //动画开触发
+PrefixedEvent(animEle, "AnimationStart", AnimationListener);  //动画开始触发
 PrefixedEvent(animEle, "AnimationIteration", AnimationListener); //每一次新的动画执行过程中被触发
 PrefixedEvent(animEle, "AnimationEnd", AnimationListener); //动画结束触发
 ```

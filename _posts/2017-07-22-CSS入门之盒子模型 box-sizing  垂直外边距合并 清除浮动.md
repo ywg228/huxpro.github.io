@@ -1,12 +1,12 @@
 ---
 layout:     post
 title:      CSS入门之盒子模型 box-sizing 垂直外边距合并 清除浮动
-subtitle:   CSS
+subtitle:   CSS入门
 date:       2017-07-22
 author:     Ywg
 header-img: img/home-bg-o.jpg
 catalog:    true
-tags: CSS
+tags: CSS CSS入门
 ---
 
 ## 前言

@@ -40,6 +40,14 @@ background-color:blue !important; /* All browsers but IE6 */
 比如说，我们可以通过:before来在一个元素前增加一些文本，并为这些文本添加样式。虽然用户可以看到这些文本，但是这些文本实际上不在文档树中。
 
 #### 例子
+HTML:
+```
+<ul>
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
+</ul>
+```
 CSS:
 ```
         ul {
@@ -68,14 +76,10 @@ CSS:
             background-color: #ccc;
         }
 ```
-HTML:
-```
-<ul>
-    <li>item1</li>
-    <li>item2</li>
-    <li>item3</li>
-</ul>
-```
+
+<iframe height='271' scrolling='no' title='CSS　伪元素' src='//codepen.io/ywg228/embed/aywjBp/?height=271&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/ywg228/pen/aywjBp/'>CSS　伪元素</a> by Mr.Yang (<a href='https://codepen.io/ywg228'>@ywg228</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
 #### 区别
 伪类操作的是文档树中已有的元素，而伪元素则创建了一个文档树外的元素。 <br>
 所以伪类与伪元素的区别在于：**有没有创建一个文档树之外的元素**。

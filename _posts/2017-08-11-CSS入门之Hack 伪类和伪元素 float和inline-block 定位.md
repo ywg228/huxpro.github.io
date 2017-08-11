@@ -27,8 +27,6 @@ background-color:blue !important; /* All browsers but IE6 */
 - 选择器前缀法
 - CSS3选择器结合JavaScript的Hack
 
-
-
 ## float和inline-block
 #### 两者区别
 - 文档流：浮动元素会脱离文档流，并使得周围元素环绕这个元素。而inline-block元素仍在文档流内。因此设置inline-block不需要清除浮动。当然，周围元素不会环绕这个元素，你也不可能通过清除inline-block就让一个元素跑到下面去。
@@ -56,6 +54,7 @@ background-color:blue !important; /* All browsers but IE6 */
     font-size: 14px;
 }
 ```
+#### 使用场景
 
 ## 伪类和伪元素
 #### 定义

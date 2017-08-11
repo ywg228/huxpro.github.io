@@ -36,9 +36,17 @@ background-color:blue !important; /* All browsers but IE6 */
 - 垂直对齐：inline-block元素沿着默认的基线对齐。浮动元素紧贴顶部。你可以通过vertical属性设置这个默认基线，但对浮动元素这种方法就不行了。这也是我倾向于inline-block的主要原因。
 - 空白：inline-block包含html空白节点。如果你的html中一系列元素每个元素之间都换行了，当你对这些元素设置inline-block时，这些元素之间就会出现空白。而浮动元素会忽略空白节点，互相紧贴。
 
-#### 去掉inline-block的空白
-1. font-size: 0; 
+#### 去除inline-block元素的空白间距
+![inline-block元素的空白间距](https://cloud.githubusercontent.com/assets/12554487/21287532/db3c7752-c4a8-11e6-81df-81ce704d7955.png)
+
 给父元素设置font-size: 0，子元素需重新设置字体大小。
+```
+<div class="parent">
+  <div class="child">inline-block</div>
+  <div class="child">inline-block</div>
+  <div class="child">inline-block</div>
+</div>
+```
 ```
 .parent {
     font-size: 0;

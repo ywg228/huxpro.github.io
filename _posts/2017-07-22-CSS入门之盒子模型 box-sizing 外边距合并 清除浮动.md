@@ -11,7 +11,8 @@ tags: CSS
 
 ## 前言
 - CSS盒子模型：在一个文档中，每一个元素都被抽象成一个盒子。
-如下图所示：盒模型从内到外由四部分组成：content内容、padding内边距、border边框和margin外边距。盒模型是区分方向的：上右下左。
+- 盒模型从内到外由四部分组成：content内容、padding内边距、border边框和margin外边距。
+- 盒模型是区分方向的：上右下左。
 
 ![盒模型](http://static.oschina.net/uploads/img/201503/10153449_ZoQu.png)
 
@@ -94,4 +95,21 @@ height = content-height + padding-height + border-height
 - 所有元素的内边距、边框以及水平外边距也都不会合并。
 
 ## 浮动及清除
+#### 问题
+在使用了浮动float后，使用浮动的元素溢出到了父容器外面！父容器并没有撑开！
 
+#### 解决
+在浮动元素的父容器加上clearfix即可
+```
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  font-size: 0;
+  visibility: hidden;
+}
+.clearfix {
+  zoom: 1;
+}
+```

@@ -98,8 +98,11 @@ height = content-height + padding-height + border-height
 #### 问题
 在使用了浮动float后，使用浮动的元素溢出到了父容器外面！父容器并没有撑开！
 
+#### 原因
+浮动元素脱离了原来的文档流，不受父元素的控制。如果我们想让父元素还包含浮动的子元素，怎么做呢？
+
 #### 解决
-在浮动元素的父容器加上clearfix即可
+给父元素添加一个非浮动的子元素，然后清除该子元素。在浮动元素的父容器加上clearfix即可
 ```
 .clearfix:after {
   content: ".";
@@ -110,7 +113,7 @@ height = content-height + padding-height + border-height
   visibility: hidden;
 }
 .clearfix {
-  *zoom: 1;
+  *zoom: 1; 
 }
 ```
 

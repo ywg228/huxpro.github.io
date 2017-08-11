@@ -28,11 +28,14 @@ background-color:blue !important; /* All browsers but IE6 */
 - CSS3选择器结合JavaScript的Hack
 
 ## float和inline-block
+#### 作用
+相邻元素会在一行显示不换行，直到本行排满，就换行显示。
+
 #### 两者区别
-- 文档流：浮动元素会脱离文档流，并使得周围元素环绕这个元素。而inline-block元素仍在文档流内。因此设置inline-block不需要清除浮动。当然，周围元素不会环绕这个元素，你也不可能通过清除inline-block就让一个元素跑到下面去。
-- 水平位置：很明显你不能通过给父元素设置text-align:center让浮动元素居中。事实上定位类属性设置到父元素上，均不会影响父元素内浮动的元素。但是父元素内元素如果设置了display：inline-block，则对父元素设置一些定位属性会影响到子元素。（这还是因为浮动元素脱离文档流的关系）。
-- 垂直对齐：inline-block元素沿着默认的基线对齐。浮动元素紧贴顶部。你可以通过vertical属性设置这个默认基线，但对浮动元素这种方法就不行了。这也是我倾向于inline-block的主要原因。
-- 空白：inline-block包含html空白节点。如果你的html中一系列元素每个元素之间都换行了，当你对这些元素设置inline-block时，这些元素之间就会出现空白。而浮动元素会忽略空白节点，互相紧贴。
+- 文档流：float会脱离文档流，导致重绘，增加浏览器消耗。inline-block不脱离文档流。
+- 水平位置：给float的父元素设text-align: center，不会让float居中。给inline-block的父元素设text-align: center，会让inline-block居中。
+- 垂直对齐：浮动元素默认顶部对齐vertical-align: top，如遇到上行有空白，而当前元素大小可以挤进去，那么这个元素会在上行补位排列。而inline-block元素默认基线对齐vertical-align: baseline。当一行内的元素高度不一时，以高度最大的元素高度为行高，即使高度小的元素周围有空，也不会有第二行元素上浮补位。由于元素的容器属性为block，内容为inline，所以可以视为文字，然后通过vertical设置垂直对齐方式。
+- 空白：inline-block元素之间如果包含html空白节点，元素之间会出现空白间隙。而浮动元素会忽略空白节点，互相紧贴。
 
 #### 去除inline-block元素的空白间距
 ![inline-block元素的空白间距](https://cloud.githubusercontent.com/assets/12554487/21287532/db3c7752-c4a8-11e6-81df-81ce704d7955.png)

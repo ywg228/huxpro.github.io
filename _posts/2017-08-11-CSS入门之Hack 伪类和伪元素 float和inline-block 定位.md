@@ -82,6 +82,9 @@ background-color:blue !important; /* All browsers but IE6 */
 - 若干个元素平行排列，且在父元素中居中排列，此时可以用inline-block，且给父元素设text-align: center。
 - 用inline-block可以实现横向导航栏，无论是居左的导航栏还是居右的都适用，尽管用float也可以实现，但是推荐用inline-block实现。
 
+<iframe height='265' scrolling='no' title='CSS float inline-block区别' src='//codepen.io/ywg228/embed/XagBxR/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/ywg228/pen/XagBxR/'>CSS float inline-block区别</a> by Mr.Yang (<a href='https://codepen.io/ywg228'>@ywg228</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
 ## 伪类和伪元素
 #### 定义
 - **伪类用于当已有元素处于的某个状态时，为其添加对应的样式** <br>

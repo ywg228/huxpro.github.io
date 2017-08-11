@@ -27,64 +27,6 @@ background-color:blue !important; /* All browsers but IE6 */
 - 选择器前缀法
 - CSS3选择器结合JavaScript的Hack
 
-## float和inline-block
-#### 作用
-相邻元素会在一行显示不换行，直到本行排满，就换行显示。
-
-#### 两者区别
-- 文档流：float会脱离文档流，导致重绘，增加浏览器消耗。inline-block不脱离文档流。
-- 水平位置：给float的父元素设text-align: center，不会让float居中。给inline-block的父元素设text-align: center，会让inline-block居中。
-- 垂直对齐：浮动元素默认顶部对齐vertical-align: top，如遇到上行有空白，而当前元素大小可以挤进去，那么这个元素会在上行补位排列。而inline-block元素默认基线对齐vertical-align: baseline。当一行内的元素高度不一时，以高度最大的元素高度为行高，即使高度小的元素周围有空，也不会有第二行元素上浮补位。由于元素的容器属性为block，内容为inline，所以可以视为文字，然后通过vertical设置垂直对齐方式。
-- 空白：inline-block元素之间如果包含html空白节点，元素之间会出现空白间隙。而浮动元素会忽略空白节点，互相紧贴。
-
-#### 浮动导致父元素高度塌陷
-解决：清除浮动 在父元素加上clearfix
-```
-.clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  font-size: 0;
-  visibility: hidden;
-}
-.clearfix {
-  *zoom: 1; /* For IE 6&7 only 可省略*/
-}
-```
-
-#### float元素换行后会自动填充到前一行比较矮的元素下面
-给各个float元素设置固定高度。
-
-#### 去除inline-block元素的空白间距
-![inline-block元素的空白间距](https://cloud.githubusercontent.com/assets/12554487/21287532/db3c7752-c4a8-11e6-81df-81ce704d7955.png)
-
-给父元素设置font-size: 0，子元素需重新设置字体大小。
-```
-<div class="parent">
-  <div class="child">inline-block</div>
-  <div class="child">inline-block</div>
-  <div class="child">inline-block</div>
-</div>
-```
-```
-.parent {
-    font-size: 0;
-}
-.child {
-    display: inline-block;
-    font-size: 14px;
-}
-```
-#### 使用场景
-- 当若干子元素居左，若干子元素居右，使用float。
-- 要设置某些子元素在一行或者多行内显示，尤其是排列方向一致的情况下，尽量使用inline-block。
-- 若干个元素平行排列，且在父元素中居中排列，此时可以用inline-block，且给父元素设text-align: center。
-- 用inline-block可以实现横向导航栏，无论是居左的导航栏还是居右的都适用，尽管用float也可以实现，但是推荐用inline-block实现。
-
-<iframe height='265' scrolling='no' title='CSS float inline-block区别' src='//codepen.io/ywg228/embed/XagBxR/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/ywg228/pen/XagBxR/'>CSS float inline-block区别</a> by Mr.Yang (<a href='https://codepen.io/ywg228'>@ywg228</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
 ## 伪类和伪元素
 #### 定义
 - **伪类用于当已有元素处于的某个状态时，为其添加对应的样式** <br>
@@ -144,3 +86,79 @@ CSS:
 
 #### 伪元素使用单冒号还是双冒号？
 CSS3规范中的要求使用双冒号(::)表示伪元素，以此来区分伪元素和伪类，比如::before和::after等伪元素使用双冒号(::)，:hover和:active等伪类使用单冒号(:)。除了一些低于IE8版本的浏览器外，大部分浏览器都支持伪元素的双冒号(::)表示方法。
+
+
+## float和inline-block
+#### 作用
+相邻元素会在一行显示不换行，直到本行排满，就换行显示。
+
+#### 两者区别
+- 文档流：float会脱离文档流，导致重绘，增加浏览器消耗。inline-block不脱离文档流。
+- 水平位置：给float的父元素设text-align: center，不会让float居中。给inline-block的父元素设text-align: center，会让inline-block居中。
+- 垂直对齐：浮动元素默认顶部对齐vertical-align: top，如遇到上行有空白，而当前元素大小可以挤进去，那么这个元素会在上行补位排列。而inline-block元素默认基线对齐vertical-align: baseline。当一行内的元素高度不一时，以高度最大的元素高度为行高，即使高度小的元素周围有空，也不会有第二行元素上浮补位。由于元素的容器属性为block，内容为inline，所以可以视为文字，然后通过vertical设置垂直对齐方式。
+- 空白：inline-block元素之间如果包含html空白节点，元素之间会出现空白间隙。而浮动元素会忽略空白节点，互相紧贴。
+
+#### 浮动导致父元素高度塌陷
+解决：清除浮动 在父元素加上clearfix
+```
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  font-size: 0;
+  visibility: hidden;
+}
+.clearfix {
+  *zoom: 1; /* For IE 6&7 only 可省略*/
+}
+```
+
+#### float元素换行后会自动填充到前一行比较矮的元素下面
+给各个float元素设置固定高度。
+
+#### 去除inline-block元素的空白间距
+![inline-block元素的空白间距](https://cloud.githubusercontent.com/assets/12554487/21287532/db3c7752-c4a8-11e6-81df-81ce704d7955.png)
+
+给父元素设置font-size: 0，子元素需重新设置字体大小。
+```
+<div class="parent">
+  <div class="child">inline-block</div>
+  <div class="child">inline-block</div>
+  <div class="child">inline-block</div>
+</div>
+```
+```
+.parent {
+    font-size: 0;
+}
+.child {
+    display: inline-block;
+    font-size: 14px;
+}
+```
+#### 使用场景
+- 当若干子元素居左，若干子元素居右，使用float。
+- 要设置某些子元素在一行或者多行内显示，尤其是排列方向一致的情况下，尽量使用inline-block。
+- 若干个元素平行排列，且在父元素中居中排列，此时可以用inline-block，且给父元素设text-align: center。
+- 用inline-block可以实现横向导航栏，无论是居左的导航栏还是居右的都适用，尽管用float也可以实现，但是推荐用inline-block实现。
+
+<iframe height='265' scrolling='no' title='CSS float inline-block区别' src='//codepen.io/ywg228/embed/XagBxR/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/ywg228/pen/XagBxR/'>CSS float inline-block区别</a> by Mr.Yang (<a href='https://codepen.io/ywg228'>@ywg228</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## 定位 position
+相对于它在常规文档流中的位置重新定位。
+position 属性有4个值：static、relative、absoulte、fixed，默认值为 static。
+
+#### 默认定位 static
+默认定位下，每个元素在处在常规文档流中，它们都是块级元素，所以会在页面中自上而下地堆叠。
+
+#### 相对定位 relative
+相对于它原来在文档流中的位置（默认位置）进行定位。
+
+#### 绝对定位 absolute
+脱离了常规文档流，相对于**最近的相对定位的父元素**进行定位，如果没有，则相对于body定位。
+
+#### 固定定位 fixed
+与绝对定位类似，但是它是相对于 **浏览器窗口** 定位的。并不会随页面滚动。<br>
+常用用于固定页头，页脚。

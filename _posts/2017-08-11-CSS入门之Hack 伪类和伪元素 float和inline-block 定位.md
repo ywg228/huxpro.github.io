@@ -148,7 +148,7 @@ CSS3规范中的要求使用双冒号(::)表示伪元素，以此来区分伪元
 
 ## 定位 position
 相对于它在常规文档流中的位置重新定位。
-position 属性有4个值：static、relative、absoulte、fixed，默认值为 static。
+position 属性有4个值：static、relative、absoulte、fixed，默认值为 static。使用top,right,bottom,left四个方向进行定位。
 
 #### 默认定位 static
 默认定位下，每个元素在处在常规文档流中，它们都是块级元素，所以会在页面中自上而下地堆叠。

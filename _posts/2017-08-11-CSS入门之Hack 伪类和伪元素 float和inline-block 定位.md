@@ -29,7 +29,25 @@ background-color:blue !important; /* All browsers but IE6 */
 
 
 
-## tfloat和inline-block
+## float和inline-block
+#### 两者区别
+- 文档流：浮动元素会脱离文档流，并使得周围元素环绕这个元素。而inline-block元素仍在文档流内。因此设置inline-block不需要清除浮动。当然，周围元素不会环绕这个元素，你也不可能通过清除inline-block就让一个元素跑到下面去。
+- 水平位置：很明显你不能通过给父元素设置text-align:center让浮动元素居中。事实上定位类属性设置到父元素上，均不会影响父元素内浮动的元素。但是父元素内元素如果设置了display：inline-block，则对父元素设置一些定位属性会影响到子元素。（这还是因为浮动元素脱离文档流的关系）。
+- 垂直对齐：inline-block元素沿着默认的基线对齐。浮动元素紧贴顶部。你可以通过vertical属性设置这个默认基线，但对浮动元素这种方法就不行了。这也是我倾向于inline-block的主要原因。
+- 空白：inline-block包含html空白节点。如果你的html中一系列元素每个元素之间都换行了，当你对这些元素设置inline-block时，这些元素之间就会出现空白。而浮动元素会忽略空白节点，互相紧贴。
+
+#### 去掉inline-block的空白
+1. font-size: 0; 
+给父元素设置font-size: 0，子元素需重新设置字体大小。
+```
+.parent {
+    font-size: 0;
+}
+.child {
+    display: inline-block;
+    font-size: 14px;
+}
+```
 
 ## 伪类和伪元素
 #### 定义

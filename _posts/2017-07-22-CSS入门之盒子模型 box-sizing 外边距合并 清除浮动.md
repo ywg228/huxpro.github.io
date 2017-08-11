@@ -113,3 +113,6 @@ height = content-height + padding-height + border-height
   *zoom: 1;
 }
 ```
+
+## 资料
+[学习CSS布局](http://zh.learnlayout.com/toc.html)

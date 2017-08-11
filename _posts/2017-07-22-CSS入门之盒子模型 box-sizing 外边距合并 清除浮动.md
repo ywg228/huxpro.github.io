@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      CSS盒模型
+title:      CSS入门之盒子模型 box-sizing 外边距合并 清除浮动
 subtitle:   CSS
 date:       2017-07-22
 author:     Ywg

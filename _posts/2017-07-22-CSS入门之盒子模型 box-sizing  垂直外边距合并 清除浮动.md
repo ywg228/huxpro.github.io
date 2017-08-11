@@ -113,7 +113,7 @@ height = content-height + padding-height + border-height
   visibility: hidden;
 }
 .clearfix {
-  *zoom: 1; /* IE6 可省略*/
+  *zoom: 1; /* For IE 6&7 only 可省略*/
 }
 ```
 

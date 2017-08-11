@@ -1,12 +1,12 @@
 ---
 layout:     post
 title:      CSS入门之Hack 伪类和伪元素 float和inline-block 定位
-subtitle:   CSS
+subtitle:   CSS入门
 date:       2017-08-11
 author:     Ywg
 header-img: img/home-bg-o.jpg
 catalog:    true
-tags: CSS
+tags: CSS CSS入门
 ---
 
 ## CSS hack

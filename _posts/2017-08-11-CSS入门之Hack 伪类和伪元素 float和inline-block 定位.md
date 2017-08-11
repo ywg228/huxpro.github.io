@@ -37,6 +37,25 @@ background-color:blue !important; /* All browsers but IE6 */
 - 垂直对齐：浮动元素默认顶部对齐vertical-align: top，如遇到上行有空白，而当前元素大小可以挤进去，那么这个元素会在上行补位排列。而inline-block元素默认基线对齐vertical-align: baseline。当一行内的元素高度不一时，以高度最大的元素高度为行高，即使高度小的元素周围有空，也不会有第二行元素上浮补位。由于元素的容器属性为block，内容为inline，所以可以视为文字，然后通过vertical设置垂直对齐方式。
 - 空白：inline-block元素之间如果包含html空白节点，元素之间会出现空白间隙。而浮动元素会忽略空白节点，互相紧贴。
 
+#### 浮动导致父元素高度塌陷
+解决：清除浮动 在父元素加上clearfix
+```
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  font-size: 0;
+  visibility: hidden;
+}
+.clearfix {
+  *zoom: 1; /* For IE 6&7 only 可省略*/
+}
+```
+
+#### float元素换行后会自动填充到前一行比较矮的元素下面
+给各个float元素设置固定高度。
+
 #### 去除inline-block元素的空白间距
 ![inline-block元素的空白间距](https://cloud.githubusercontent.com/assets/12554487/21287532/db3c7752-c4a8-11e6-81df-81ce704d7955.png)
 
@@ -58,6 +77,10 @@ background-color:blue !important; /* All browsers but IE6 */
 }
 ```
 #### 使用场景
+- 当若干子元素居左，若干子元素居右，使用float。
+- 要设置某些子元素在一行或者多行内显示，尤其是排列方向一致的情况下，尽量使用inline-block。
+- 若干个元素平行排列，且在父元素中居中排列，此时可以用inline-block，且给父元素设text-align: center。
+- 用inline-block可以实现横向导航栏，无论是居左的导航栏还是居右的都适用，尽管用float也可以实现，但是推荐用inline-block实现。
 
 ## 伪类和伪元素
 #### 定义

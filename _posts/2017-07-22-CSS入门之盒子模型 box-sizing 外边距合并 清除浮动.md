@@ -110,6 +110,6 @@ height = content-height + padding-height + border-height
   visibility: hidden;
 }
 .clearfix {
-  zoom: 1;
+  *zoom: 1;
 }
 ```
